@@ -1,0 +1,35 @@
+{
+  "name": "api-server",
+  "version": "0.0.0",
+  "description": "api-server for study node",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm run"
+  },
+  "keywords": [
+    "api",
+    "server",
+    "node",
+    "express"
+  ],
+  "author": "CSY",
+  "license": "MIT",
+  "dependencies": {
+    "@escook/express-joi": "^1.1.1",
+    "@hapi/joi": "^17.1.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "express-jwt": "^7.7.5",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.19.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "prettier": "^2.7.1"
+  }
+}
