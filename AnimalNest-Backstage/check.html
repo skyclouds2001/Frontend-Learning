@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>动物小窝-管理</title>
+
+    <link rel="stylesheet" type="text/css" href="reset.css">
+
+    <link rel="stylesheet" type="text/css" href="check.css">
+    <style type="text/css">
+        body {
+            background-color: rgb(204, 232, 207);
+        }
+    </style>
+
+    <script type="text/javascript" src="check.js"></script>
+</head>
+
+<body>
+
+    <div class="mainbox">
+
+        <div class="checkbox">动态审核</div>
+
+        <div class="leftbox">
+            <div class="picturebox"></div>
+            <div class="textbox"></div>
+        </div>
+
+        <div class="rightbox">
+            <form action="" method="POST" name="check">
+
+                <div class="animal">
+                    <div class="kind"></div>
+                    <div class="name">
+                        <!-- <img src="javascript:;"> -->
+                        <span></span>
+                    </div>
+                    <input type="submit" value="点击更换动物" name="changeAnimal" class="checkcom">
+                </div>
+
+                <div class="check">
+                    <input type="submit" value="审核通过" name="approve" class="checkcom">
+                    <input type="submit" value="审核不通过" name="disapprove" class="checkcom">
+                </div>
+
+            </form>
+        </div>
+
+        <div class="recheck" id="recheck">
+            <form>
+
+                <p>请输入审核不通过理由</p>
+                <p>如广告、诈骗、涉黄等</p>
+                <textarea name="message" wrap="soft">审核不通过理由</textarea>
+                <div class="post">
+                    <input type="reset" name="cancel" value="取消">
+                    <input type="submit" name="ok" value="确认">
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

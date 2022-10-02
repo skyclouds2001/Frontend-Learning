@@ -1,0 +1,69 @@
+.page {
+    width: 600px;
+    height: 400px;
+    background-color: rgb(226, 226, 226);
+
+    border: rgb(153, 153, 153) 1px solid;
+
+    margin: 100px auto;
+
+    box-shadow: 5px 5px 5px rgb(165, 162, 162);
+
+    border-radius: 10px;
+
+    position: relative;
+}
+
+.phone-label, .pw-label {
+    position: absolute;
+    left: 150px;
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.phone-label {
+    top: 100px;
+}
+
+.pw-label {
+    top: 180px;
+}
+
+.phone-input, .pw-input {
+    position: absolute;
+    left: 270px;
+
+    height: 20px;
+    width: 200px;
+
+    font-size: 18px;
+}
+
+.phone-input {
+    top: 98px;
+}
+
+.pw-input {
+    top: 178px;
+}
+
+.submit-button, .reset-button {
+    position: absolute;
+    top: 260px;
+
+    width: 60px;
+    height: 30px;
+
+    font-size: 18px;
+
+    border-radius: 10px;
+}
+
+.submit-button {
+    left: 210px;
+}
+
+.reset-button {
+    left: 340px;
+}
