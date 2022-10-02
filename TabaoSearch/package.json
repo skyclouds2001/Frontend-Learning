@@ -1,0 +1,16 @@
+{
+  "name": "taobao-search",
+  "version": "1.0.0",
+  "description": "example",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "taobao",
+    "search",
+    "example"
+  ],
+  "author": "CSY",
+  "license": "ISC"
+}
