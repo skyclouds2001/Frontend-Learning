@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>事件日志</title>
+
+    <link rel="stylesheet" type="text/css" href="reset.css">
+
+    <link rel="stylesheet" type="text/css" href="t11.css">
+</head>
+
+<body>
+    <div class="info clearfix">
+
+        <div class="img_box">
+            <img src="people.jpg" alt="Oh no! The image is missing." title=" ">
+        </div>
+
+        <div class="info_box">
+            <span id="name">姓名：</span>
+            <span id="interest">兴趣：</span>
+            <span id="race">种族：</span>
+            <span id="popeDoor">宗门：</span>
+            <span id="sex">性别：</span>
+            <span id="status">身份：</span>
+            <span id="charm">魅力：</span>
+            <span id="cultivation">修为：</span>
+        </div>
+
+        <div class="button_box">
+            <button class="chat" onclick="talk(1)">闲聊</button>
+            <button class="communicate" onclick="talk(2)">论道</button>
+            <button class="argue" onclick="talk(3)">挑衅</button>
+        </div>
+    </div>
+    <div class="talk">
+        <span class="basic">交谈记录</span>
+        <div id="talk_box">
+            <p>&nbsp;</p>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="t11.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+#outter {
+    box-sizing: border-box;
+
+    position: relative;
+
+    width: 500px;
+    height: 50px;
+    background-color: rgb(232,232,232);
+
+    border: 1px rgb(150, 150, 150) solid;
+}
+
+#outter #mid {
+    position: absolute;
+
+    width: 10%;
+    height: 100%;
+
+    background-color: rgb(255, 255, 255);
+
+    font-size: 30px;
+    font-weight: bold;
+
+    line-height: 50px;
+    text-align: center;
+
+    z-index: 100;
+}
+
+#outter #left {
+    position: absolute;
+
+    width: 0%;
+    height: 100%;
+
+    z-index: 1;
+}
+
+#outter #right {
+    position: absolute;
+
+    width: auto;
+    height: 100%;
+
+    z-index: 1;
+}
+
+#outter #content {
+    display: inline-block;
+
+    position: absolute;
+
+    line-height: 50px;
+    text-align: center;
+
+    font-size: 20px;
+
+    left: 200px;
+
+    z-index: 10;
+}

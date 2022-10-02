@@ -1,0 +1,26 @@
+/* #score {
+    border: black 1px solid;
+} */
+
+#score td {
+    border: black 1px solid;
+    padding: 5px 10px;
+
+    font-size: 17px;
+
+    line-height: 30px;
+    text-align: center;
+}
+
+#score caption {
+    font-size: 30px;
+    font-weight: bold;
+
+    line-height: 40px;
+
+    margin: 20px;
+}
+
+#score #s0 td {
+    font-weight: bold;
+}

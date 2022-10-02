@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>study-CSS-3</title>
+
+	<link rel="stylesheet" type="text/css" href="reset.css">
+
+	<style type="text/css">
+		/***** 盒子大小 *****/
+		/*
+			box-sizing 设置盒子尺寸的计算方式
+			           设置width和height作用
+				content-box 默认值 设置为内容区大小
+				border-box 设置为内容区+内边距+边框大小
+		*/
+		.box0101 {
+			width: 100px;
+			height: 100px;
+			margin: 10px;
+			border: 10px black solid;
+			padding: 10px;
+			background-color: red;
+
+			box-sizing: content-box;
+		}
+		.box0102 {
+			width: 100px;
+			height: 100px;
+			margin: 10px;
+			border: 10px black solid;
+			padding: 10px;
+			background-color: yellow;
+
+			box-sizing: border-box;
+		}
+		/***** 轮廓 *****/
+		/*
+			outline属性
+			设置同border
+			不影响可见框大小
+		*/
+		.box0201 {
+			width: 100px;
+			height: 100px;
+			background-color: orange;
+
+			outline: 10px black solid;
+		}
+		/***** 阴影 *****/
+		/*
+			box-shadow属性
+				水平偏移量 垂直偏移量 模糊半径 阴影颜色
+		*/
+		.box0202 {
+			width: 100px;
+			height: 100px;
+			background-color: green;
+
+			box-shadow: 5px 5px 5px black;
+		}
+		/***** 圆角 *****/
+		/*
+			border-radius属性
+				border-top-left-radius
+				border-top-right-radius
+				border-bottom-right-radius
+				border-bottom-left-radius
+
+			值个数规则同border
+			左上 右上 右下 左下
+
+			每个角一个值圆角，两个值椭圆角
+		*/
+		.box0203 {
+			width: 100px;
+			height: 100px;
+			background-color: green;
+
+			border-radius: 10px 5px 10px 5px;
+			border-radius: 20px 20px 10px 10px / 10px 10px 20px 20px;
+			/* 设置为圆形 */
+			 border-radius: 50%;
+		}
+		/***** 浮动 *****/
+		/*
+			float属性
+			使元素向其父元素左侧或右侧移动
+				none，默认值，元素不浮动
+				left，元素向左浮动
+				right，元素向右移动
+
+			注意：设置浮动后，水平布局等式不需要强制成立
+				元素设置浮动后，会完全脱离文档流，不占据文档流位置，原元素以下元素自动上移
+
+				浮动元素完全脱离文档流，不占据文档流位置
+				浮动元素会向父元素左侧或右侧移动
+				浮动元素默认不移出父元素
+				浮动元素移动时，不会超出之前的其他浮动元素
+				浮动元素上为无移动块元素，则浮动元素无法上移
+				浮动元素不超出上侧浮动兄弟元素，最多一样高
+
+				*****允许元素水平排列
+		*/
+		.box0301 {
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+		}
+		.box0302 {
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+
+			float: left;
+		}
+		.box0303 {
+			width: 20px;
+			height: 20px;
+			background-color: purple;
+
+			float: left;
+		}
+		/*
+			不盖住文字，文字自动环绕在浮动元素周围
+				设置文字环绕图片效果
+
+			脱离文档流特点
+				块元素
+					不再独占一行
+					宽度高度由内容撑开
+
+				行内元素
+					同块元素
+		*/
+		.box0401 {
+			width: 5px;
+			height: 5px;
+			background-color: purple;
+
+			float: left;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box0101"></div>
+	<div class="box0102"></div>
+
+	<br/><br/><br/>
+	<div class="box0201"></div>
+	<div class="box0202"></div>
+	<div class="box0203"></div>
+
+	<br/><br/><br/>
+	<div class="box0301">
+		<div class="box0302"></div>
+		<div class="box0303"></div>
+		<p style="color: red;">ssssssssssssss</p>
+	</div>
+
+	<br/><br/><br/>
+	<div class="box0401"></div>
+	<p>
+		8月5日0-24时，扬州市新增本土新冠肺炎确诊病例58例。截至目前，全市累计报告本土确诊病例220例（其中轻型69例，普通型135例，重型14例，危重型2例），本土无症状感染者0例。截至目前，扬州市共有高风险地区1个，中风险地区66个。通过对病例流行病学调查，已排查出密切接触者和次密接7037人，均已按照有关规定进行隔离管控。
+	</p>
+</body>
+
+</html>

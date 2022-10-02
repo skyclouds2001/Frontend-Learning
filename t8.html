@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>京东轮换图</title>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <style>
+        .img-list {
+            width: 590px;
+            height: 470px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .img-list li {
+            position: absolute;
+        }
+
+        .img-list li:nth-child(4) {
+            z-index: 1;
+        }
+
+        .pointers {
+            position: absolute;
+            z-index: 9999;
+            bottom: 20px;
+            left: 40px;
+        }
+
+        .pointers a {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, .4);
+            margin: 0px 2px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            background-clip: content-box;
+            float: left;
+        }
+        .pointers a.active, .pointers a:hover {
+            background-color: white;
+            border: 2px solid rgba(255, 255, 255, .4);
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="img-list">
+        <li><a href="javascript:;"><img src="img/1.jpg" width="590px"></a></li>
+        <li><a href="javascript:;"><img src="img/2.jpg" width="590px"></a></li>
+        <li><a href="javascript:;"><img src="img/3.jpg" width="590px"></a></li>
+        <li><a href="javascript:;"><img src="img/4.jpg" width="590px"></a></li>
+        <li><a href="javascript:;"><img src="img/5.jpg" width="590px"></a></li>
+        <li><a href="javascript:;"><img src="img/6.jpg" width="590px"></a></li>
+        <li><a href="javascript:;"><img src="img/7.jpg" width="590px"></a></li>
+        <li><a href="javascript:;"><img src="img/8.jpg" width="590px"></a></li>
+
+        <div class="pointers">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;" class="active"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </ul>
+</body>
+
+</html>

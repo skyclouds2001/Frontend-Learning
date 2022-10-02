@@ -1,0 +1,86 @@
+body {
+    font-size: 20px;
+}
+
+.clearfix::before,
+.clearfix::after{
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.info, .talk {
+    width: 1000px;
+    height: 400px;
+
+    margin: 0px auto;
+    padding: 25px 0px 0px 0px;
+    /* border: 1px black solid; */
+
+    font-size: 20px;
+}
+
+.info > div {
+    float: left;
+}
+
+/*
+.img_box {
+    border: 1px solid black;
+}
+*/
+
+.img_box img {
+    height: 400px;
+    width: 400px;
+}
+
+.info_box, .button_box {
+    box-sizing: border-box;
+
+    width: 600px;
+    height: 300px;
+
+    padding: 20px 50px;
+    margin: 0px;
+    /* border: 1px solid black; */
+}
+
+.info_box {
+    height: 300px;
+}
+
+.info_box span {
+    box-sizing: border-box;
+
+    float: left;
+
+    width: 200px;
+    height: 70px;
+
+    /* border: 1px solid black; */
+    margin: 0px;
+    padding: 0px 5px;
+
+    line-height: 70px;
+}
+
+.button_box {
+    height: auto;
+}
+
+.button_box button {
+    margin: 0px 10px;
+    font-size: 17px;
+}
+
+.basic {
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 40px;
+}
+
+.talk p {
+    font-size: 20px;
+    line-height: 30px;
+}

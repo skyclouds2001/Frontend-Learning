@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>66</title>
+
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<style type="text/css">
+		div {
+			font-size: 50px;
+			width: 200px;
+			height: 200px;
+		}
+
+		.box1 {
+			background-color: red;
+			float: left;
+		}
+		.box2 {
+			background-color: yellow;
+			/* clear属性清除浮动元素对当前元素所产生影响 */
+			/* left right both */
+			clear: left;
+			float: right;
+		}
+		.box3 {
+			background-color: green;
+			clear: both;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+	<div class="box3"></div>
+</body>
+
+</html>

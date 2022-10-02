@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>transform</title>
+
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <style type="text/css">
+        /*
+         * 变换 transform
+         *
+         *  变换是指通过 CSS 来改变元素的形状或位置，transform 属性应用于元素的2D或3D转换
+         *  不会影响页面布局
+         *  移动坐标轴，而不是元素本身
+         *
+         * 2D和3D 变换
+         *
+         * 2D：
+         *      translate(x,y)，定义 2D 平移
+         *      scale(x [,y])，定义 2D 缩放
+         *      rotate(angle)，定义 2D 旋转
+         *      skew(x-angle,y-angle)，定义沿着 X 和 Y 轴的 2D 倾斜转换
+         *      transform-origin(x, y)，定义转换元素的原点位置
+         *
+         * 3D：
+         *      translate3d(x,y,z)，定义 3D 平移
+         *      scale3d(x,y,z)，定义 3D 缩放
+         *      rotate3d(x,y,z,angle)，定义 3D 旋转
+         *      perspective(n)，为 3D 转换元素定义透视视图
+         *      transform-origin(x, y, z)，定义转换元素的原点位置
+         *
+        */
+        .box0 {
+            width: 500px;
+            height: 500px;
+            background-color: indianred;
+            margin: 50px auto 0px;
+
+            overflow: hidden;
+        }
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: salmon;
+
+            margin: 100px auto 0px;
+            border: 1px black solid;
+        }
+        #box1 {
+            /*
+            平移（translate）
+                通过平移可使元素向 X、Y 或 Z 轴方向平移
+                    translateX()，沿 X 轴方向平移
+                    translateY()，沿 Y 轴方向平移
+                    translateZ()，沿 Z 轴方向平移
+                    translate(x, y)，沿 X 和 Y 方向平移
+                    translate3d(x, y, z)，沿 X、Y、Z 方向平移
+                平移距离如果是百分比形式，其参考元素是自身
+                可利用平移实现居中
+            */
+            transform: translate(200px);
+            /*
+                元素大小不确定居中方式
+                    绝对定位
+                left: 50%
+                transform: translateX(-50%)
+            */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box0">
+        <div class="box1" id="box1"></div>
+    </div>
+</body>
+
+</html>

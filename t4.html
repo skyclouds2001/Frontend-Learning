@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>网易新闻</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        body{
+            /*background-color: #bfa;*/
+        }
+        a{
+            text-decoration: none;
+        }
+        /* 总体容器样式 */
+        .news-wrapper{
+            width: 400px;
+            height: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+        }
+        /* 标题容器样式 */
+        .news-title{
+            display: inline-block;
+            height: 40px;
+            border-top: 1px red solid;
+            margin-top: -1px;
+        }
+        .news-title a{
+            text-decoration: none;
+            color: #404068;
+            font-weight: bold;
+        }
+        .news-img{
+            height: 250px;
+        }
+        .news-img .img-title{
+            color: #fff;
+            margin-top: -30px;
+            font-weight: bold;
+            padding-left: 50px;
+        }
+        .news-list{
+            margin-top: 20px;
+            list-style: square;
+
+            font-size: 15px;
+            color: #888;
+        }
+        
+        .news-list li{
+            margin-bottom: 17px;
+        }
+        .news-list li a{
+            font-size: 17px;
+            color: #666;
+        }
+        .news-list li a:hover{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 外侧容器 -->
+    <div class="news-wrapper">
+
+        <!-- 标题标签 -->
+        <h2 class="news-title">
+            <a href="#">体育</a>
+        </h2>
+
+        <!-- 图片容器 -->
+        <div class="news-img">
+            <a href="#">
+                <img src="http://pic-bucket.ws.126.net/photo/0005/2019-09-04/EO7O7HF805HE0005NOS.jpg" alt="费德勒" width="380px">
+
+                <!-- 图片标题 -->
+                <h3 class="img-title">
+                    费德勒首负迪米 扶额头不满发挥
+                </h3>
+            </a>
+        </div>
+
+        <!-- 新闻列表 -->
+        <ul class="news-list">
+            <li>
+                <a href="#">
+                    乔治：我爱LA 喜欢和LBJ一起打球
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    格林：3年前降薪就在等KD 特制T恤嘲讽LBJ
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    塔克4000双鞋让保罗嫉妒 乔丹被震惊
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    CBA下季新赛制：常规赛4组循环 增至46轮
+                </a>
+            </li>
+        </ul>
+
+    </div>
+
+</body>
+
+</html>

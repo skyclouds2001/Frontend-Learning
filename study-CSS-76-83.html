@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" type="text/css" href="reset.css">
+
+    <link rel="stylesheet" href="fa/css/all.css" />
+
+    <style type="text/css">
+        /*
+            引入服务器字体或网络字体
+
+            @font-face {
+                font-family: ;      // 字体名称
+                src: url();         // 字体路径
+            }
+        */
+
+        .font {
+            /*
+                color 字体颜色
+                font-size 字体大小
+                    em
+                    rem
+                font-family 字体族
+                    字体格式
+
+                    serif 衬线字体
+                    sans-serif 非衬线字体
+                    monospace 等宽字体
+                    cursive，草书字体
+                    fantasy，幻想字体
+
+                    通常包含多个字体名称作为“后备”系统，以需要的字体开始，并以通用系列结束
+            */
+            color: red;
+            font-size: 100px;
+
+            font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue,
+                         Helvetica, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif;
+        }
+        /*
+            图标字体
+
+            直接用类名使用图标字体
+            通过伪元素使用图标字体
+                找到要设置图标的元素通过 ::before 或 ::after 选中
+                在 content 设置字体的编码
+                设置字体样式
+            通过实体来使用图标字体
+                要设置图标的元素添加类 fab 或 fas
+                &#x 图标的编码
+        */
+        .demo::before {
+            content: '\f1b0';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+        }
+
+        /*
+                行高
+                line-height
+
+            文字占有的实际高度
+
+            px em 整数-文字高度的倍数
+
+            上下均匀分配
+
+                文字垂直居中，将 height 和 line-height 设置为相同值，可以使文字在元素内垂直居中
+                调整行间距，行间距 = 行高 - 字体大小
+
+                字体框
+                字体存在的格子
+        */
+        .lh {
+            display: inline-block;
+            margin: 0px;
+            padding: 0px;
+            border: rgb(218, 65, 19) solid 1px;
+
+            font-size: 50px;
+
+            line-height: 3;
+        }
+        /* font 简写属性 */
+        /* font：字重 字体样式 | 字体大小/行高 字体族 | */
+        /* 行高\字重\字体样式可以省略不写 */
+        .der {
+            border: 1px red solid;
+
+            font: /* bold italic */ 30px/2 微软雅黑,serif;
+
+            /* 字重（font-weight) */
+            /*
+             * 设置加粗
+             * normal 不加粗 默认值
+             * bold 加粗
+             * 100-900 九个级别（一般不用）
+             */
+            font-weight: bold;
+            /* 字体样式（font-style) */
+            /*
+             * 设置斜体
+             * normal 正常 默认值
+             * itatic 斜体
+             * oblique，文本为“倾斜”（倾斜与斜体非常相似，但支持较少）
+             */
+            font-style: italic;
+            /* 文本装饰（text-decoration） */
+            /*
+             * none，不加装饰
+             * underline，下划线
+             * line-through，删除线
+             * overline，上划线
+             */
+            text-decoration: underline;
+        }
+
+        .t1 {
+            width: 500px;
+            height: 500px;
+            background-color: rgb(197, 197, 197);
+            margin: 100px;
+            padding: 0px;
+            border: 1px rgb(70, 69, 69) solid;
+
+            font-size: 300px;
+
+            /* 文本的水平和垂直对齐 */
+            /* 水平对齐（text-align) */
+            /*
+             * left，左对齐
+             * right，右对齐
+             * center，居中对齐
+             * justify，两端对齐
+             */
+            text-align: center;
+            /* 垂直对齐（vertical-align） */
+            /*
+             * baseline，默认值，基线对齐
+             * top，顶部对齐
+             * bottom，底部对齐
+             * middle，居中对齐
+             *      将元素的中间与文本基线加上 x 的半高处对齐
+            */
+            vertical-align: top;
+            /* white-space
+                设置网页如何处理空白
+
+                normal，正常处理（多个空白合并为一个空白）
+                nowrap，不换行
+                pre，保留空白
+             */
+        }
+
+    </style>
+</head>
+
+<body>
+    <p class="font">GOTO</p>
+
+    <i class="fas fa-bell"></i>
+    <i class="fab fa-accessible-icon"></i>
+
+    <div class="demo"></div>
+
+    <span class="fas" style="color: rgb(218, 65, 19); font-size: 100px;">&#xf0f3</span><br/><br/><br/><br/><br/>
+
+    <span class="lh">GET</span><br/><br/>
+
+    <div class="der">GOTOWEARETOGETHOR</div>
+
+    <div class="t1">GO</div>
+
+</body>
+
+</html>

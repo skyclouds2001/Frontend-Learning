@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>animation</title>
+
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <style type="text/css">
+    /*
+     *  动画（animation）
+     *
+     *  动画和过渡类似，都可以通过纯 CSS 实现一些动态效果
+     *  动画可以自动触发动态效果
+     *
+     *  关键帧（keyframe）
+     *
+     *      设置动画效果，必须先设置一个关键帧，关键帧设置了动画执行的每一个步骤，即指定每一步的属性变化
+     *
+     *
+     *  animation-name，应用的动画名，创建关键帧时规定
+     *      需指定
+     *  animation-duration，动画执行时间
+     *      需指定
+     *  animation-delay，动画的延迟时间
+     *      默认值为 0
+     *  animation-iteration-count，动画执行次数
+     *      默认值为 1
+     *      整数值或 infinity（一直执行）
+     *  animation-direction，动画运行方向
+     *      normal，默认值，从 from 到 to 执行
+     *      reverse，从 to 到 from 执行
+     *      alternate，从 from 到 to 执行，下一周期从 to 到 from ，如此交替执行
+     *      alternate-reverse，从 to 到 from 执行，重复执行时反向执行
+     *  animation-timing-function，动画速度曲线，和过渡一样
+     *  animation-fill-mode，在不播放动画时（在开始之前，结束之后，或两者都结束时），animation-fill-mode 属性规定目标元素的样式
+     *      none，默认值，动画执行完毕回到元素原来位置
+     *      forwards，动画执行完毕后元素停止在最后一个关键帧位置
+     *      backwards，动画执行开始前（延时状态）元素显示为第一个关键帧位置
+     *      both，兼有 forwards 和 backwards 作用
+     *  animation-play-state，设置动画执行状态
+     *      running，默认值，动画执行
+     *      paused，动画停止
+     *  animation，简写属性，常用，和过渡一样
+     *
+    */
+    /* 指定开始和结束 */
+        /* @keyframe myAnimation {
+            from {
+                background-color: red;
+            }
+            to {
+                background-color: green;
+            }
+        } */
+
+        /* 还可以指定更多中间过程 */
+        /* @keyframe myAnimation {
+            0% {
+                background-color: red;
+            }
+            50% {
+                background-color: yellow;
+            }
+            to {
+                background-color: green;
+            }
+        } */
+        .box0 {
+            animation-name: myAnimation;
+            animation-duration: 3s;
+            animation-delay: 0s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-timing-function: ease;
+            animation-fill-mode: none;
+            animation-play-state: running;
+
+            margin: 150px auto;
+        }
+
+        @keyframes myAnimation {
+            from {
+                background-color: rebeccapurple;
+
+                width: 200px;
+                height: 200px;
+            }
+            to {
+                background-color: salmon;
+                width: 400px;
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box0"></div>
+</body>
+
+</html>

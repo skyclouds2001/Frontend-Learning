@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>transition</title>
+
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <style type="text/css">
+    /*
+     * 过渡（transition）
+     *  过渡可以指定一个属性发生变化时的切换方式
+     *
+     *  transition-property，执行过渡的属性
+     *      需指定
+     *      多个属性间用逗号隔开
+     *      取值：none、all、*property*
+     *      可计算的属性都可以应用过渡，从一个有效数值向另一个有效数值过渡（设置 auto 不行）
+
+     *  transition-duration，过渡效果持续时间
+     *      需指定
+     *      时间单位 s 或 ms
+
+     *  transition-timing-function，过渡的速度曲线
+     *      ease，默认值，先缓慢地开始，然后加速，然后缓慢地结束的过渡效果
+     *      linear，过渡速度不变
+     *      ease-in，缓慢开始的过渡效果
+     *      ease-out，缓慢结束的过渡效果
+     *      ease-in-out，开始和结束较慢的过渡效果
+     *      cubic-bezier(n,n,n,n)，三次贝塞尔函数定义的过渡效果
+     *                              参考 https://cubic-bezier.com/
+     *      steps(a, b)，分步执行过渡函数
+     *          第一个值为过渡的步数
+     *          第二个为跳变的时刻，是在时间段的开始还是结束（可画个时间轴理解一下）
+
+     *  transition-delay，过渡效果的延迟时间
+     *      默认为 0
+
+     *  transition，简写属性，常用，设置四个值
+     *      四个值中过渡持续时间需写在过渡延迟时间前，其余值没有固定顺序要求
+     *
+    */
+    .box1 {
+        width: 500px;
+        height: 500px;
+        background-color: silver;
+
+        overflow: hidden;
+    }
+    .box2 {
+        width: 250px;
+        height: 250px;
+        background-color: orange;
+
+        margin: 100px 0px 0px 100px;
+
+        /* transition: all 1000ms ease 0; */
+        /* transition-property: width, height; */
+        transition-property: all;
+        transition-duration: 1s;
+        transition-timing-function: ease;
+        transition-delay: 0ms;
+    }
+    .box1:hover .box2 {
+        width: 150px;
+        height: 150px;
+        background-color: orangered;
+
+        margin: 100px 0px 0px 100px;
+    }
+
+    .box3 {
+        width: 1000px;
+        height: 500px;
+        background-color: silver;
+
+        margin: 10px;
+
+        position: relative;
+    }
+    .box4, .box5 {
+        width: 100px;
+        height: 100px;
+
+        position: absolute;
+        left: 0px;
+
+        transition-duration: 2s;
+        transition-property: all;
+    }
+    .box4 {
+        background-color: blueviolet;
+        top: 100px;
+    }
+    .box5 {
+        background-color: greenyellow;
+        top: 300px;
+    }
+
+    .box3:hover .box4, .box3:hover .box5 {
+        left: 900px;
+    }
+
+    .box3:hover .box4 {
+        transition-timing-function: linear;
+    }
+    .box3:hover .box5 {
+        transition-timing-function: ease;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+
+    <div class="box3">
+        <div class="box4"></div>
+        <div class="box5"></div>
+    </div>
+</body>
+
+</html>

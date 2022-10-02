@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>1</title>
+    <style type="text/css">
+        *{
+            padding:0px;
+            margin:0px;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            margin:0 auto;
+            /* border:1px solid red; */
+            position:relative;
+            background:black;
+        }
+        .tip{
+            width:12px;
+            height:12px;
+            position:absolute;
+            left:0px;
+            top:0px;
+            /* border:1px solid blue; */
+
+        }
+        .em1,.em2{
+            width:0px;
+            height:0px;
+            display:block;
+            position:absolute;
+            left:0px;
+            top:0px;
+            border-top:5px transparent dashed;
+            border-right:5px transparent dashed;
+            border-bottom:5px transparent dashed;
+            border-left:5px white solid;
+            overflow:hidden;
+
+        }
+        .em1{
+            left:1px;
+            border-left:5px gray solid;
+        }
+        .em2{
+            border-left:5px white solid;
+        }
+
+        </style>
+</head>
+
+<body>
+    <div id="box">
+        <b class="tip"><i class="em1"></i><i class="em2"></i></b>
+    </div>
+</body>
+</html>

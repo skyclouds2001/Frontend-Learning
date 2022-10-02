@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>s</title>
+
+    <link rel="stylesheet" type="text/css" href="reset.css">
+
+    <style type="text/css">
+    </style>
+
+</head>
+
+<body>
+    <!-- <button id="b1" onclick="p1()">b1</button>
+    <button id="b2">b2</button>
+    <button id="b3">b3</button>
+    <button id="b4">b4</button>
+    <button id="b5">b5</button> -->
+
+    <!-- <ul class="list" id="list">
+        <li id="first"></li>
+        <li id="second"></li>
+        <li></li>
+    </ul> -->
+
+    <!-- <ul>
+        <li></li>
+
+        <li></li>
+    </ul> -->
+
+    <p id="p1" style="font-size: 40px"></p>
+
+
+
+    <!-- <script type="text/javascript" src="javascript-study-1.js"></script> -->
+    <!-- <script type="text/javascript" src="javascript-study-2.js"></script> -->
+    <!-- <script type="text/javascript" src="javascript-study-3.js"></script> -->
+    <!-- <script type="text/javascript" src="javascript-study-4.js"></script> -->
+    <!-- <script type="text/javascript" src="javascript-study-5.js"></script> -->
+    <!-- <script type="text/javascript" src="javascript-study-6-DOM.js"></script> -->
+    <!-- <script type="text/javascript" src="javascript-study-7-BOM.js"></script> -->
+
+    <!--
+        JSON
+            JS 对象标记法（JavaScript Object Notation）
+
+        一种存储和交换数据的语法
+        通过 JavaScript 对象标记法书写的文本（字符串），可以被任意语言识别，并转换为任意语言的对象
+
+        *** 语法
+            数据在名称/值对中
+            数据由逗号分隔 ,
+            花括号容纳对象 {}
+            方括号容纳数组 []
+            属性名必须加双引号 ""
+
+        *** JSON 中允许的值
+            字符串
+            数值
+            布尔值
+            null
+            对象（JSON 对象）
+            数组
+
+        *** JSON 解析
+            JSON.parse()
+            可以将 JSON 字符串转换为 JS 对象
+            参数为一个 JSON 字符串
+
+            eval() 函数
+            可以用来执行一段字符串形式的 JS 代码，并将执行结果返回
+            含有{}的会报错，需在字符串前后加()
+
+        *** JSON 字符串化
+            JSON.stringify()
+            把 JavaScript 对象转换为字符串
+            参数为普通对象
+            如果字符串里包含函数，会被删除
+    -->
+
+    <script type="text/javascript">
+        var json = '[{"name": "孙悟空", "age": 18, "gender": "男"}]';
+
+        var o = JSON.parse(json);
+        console.log(o);
+        console.log(o[0].name);
+    </script>
+
+
+</body>
+
+</html>

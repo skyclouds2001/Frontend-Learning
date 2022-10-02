@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>69</title>
+
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<style type="text/css">
+		/* 定位 */
+			/*
+				定位-布局手段
+				position属性
+					static 默认 不开启定位
+					relative 开启相对定位
+					absolute 开启绝对定位
+					fixed 开启固定定位
+					sticky 开启粘滞定位
+
+				偏移量offset
+					top 定位元素和定位位置上边距离
+					bottom 定位元素和定位位置下边距离
+					left 定位元素和定位位置左侧距离
+					right 定位元素和定位位置右侧距离
+
+						*****默认auto*****
+
+					当且仅当position为非static时起效
+					不同position值工作方式不同
+					通常一个方向一个偏移量足够
+
+				包含块
+					离当前块最近的祖先块元素
+					(绝对定位情况)
+						离当前元素最近开启定位的祖先元素
+						默认为根元素|初始包含块html
+
+			*/
+			body {
+				font-size: 100px;
+
+				height: 10000px;
+			}
+
+			/* 相对定位 */
+			/*
+				position=relative
+				开启后不设置偏移量，元素不发生任何变化
+				相对定位是参照于元素在文档流中的位置进行定位的
+				相对定位会提升元素层级
+				相对定位不会使元素脱离文档流
+				相对定位不会改变元素性质，块还是块，行内还是行内
+			*/
+			.box1 {
+				width: 200px;
+				height: 200px;
+				background-color: green;
+			}
+			.box2 {
+				width: 200px;
+				height: 200px;
+				background-color: orange;
+
+				position: relative;
+
+				left: 200px;
+				top: -200px;
+			}
+			.box3 {
+				width: 200px;
+				height: 200px;
+				background-color: red;
+			}
+			/* 绝对定位 */
+			/*
+				position=absolute
+				开启后不设置偏移量，元素的位置不发生任何变化
+				绝对定位是参照与元素的包含块进行定位的
+				绝对定位会提升元素层级
+				开启后元素会从文档流中脱离
+				绝对定位会改变元素性质，行内变成块，块的宽高被内容撑开（脱离文档流中元素性质）
+			*/
+			.box11 {
+				width: 200px;
+				height: 200px;
+				background-color: green;
+			}
+			.box21 {
+				width: 200px;
+				height: 200px;
+				background-color: orange;
+
+				position: absolute;
+			}
+			.box31 {
+				width: 200px;
+				height: 200px;
+				background-color: red;
+			}
+			.box41 {
+				width: 400px;
+				height: 400px;
+				background-color: green;
+			}
+			.box51 {
+				width: 300px;
+				height: 300px;
+				background-color: orange;
+
+				position: absolute;
+			}
+			.box61 {
+				width: 200px;
+				height: 200px;
+				background-color: red;
+
+				position: absolute;
+
+				left: 200px;
+				top: 200px;
+			}
+			/* 固定定位 */
+			/*
+				position=fixed
+				类似绝对定位
+				永远参照浏览器视口定位，会随浏览器滚动条滚动
+			*/
+			.box12 {
+				width: 100px;
+				height: 100px;
+				background-color: blue;
+
+				position: fixed;
+				left: 0px;
+				top: 0px;
+			}
+
+			/* 粘滞定位 */
+			/*
+				position=sticky
+				粘滞定位和相对定位特点基本一致
+				不同的是粘滞定位可以在元素到达某个位置时将其固定
+
+				一般用JavaScript实现，不使用该属性
+			*/
+			.box13 {
+				width: 1000px;
+				height: 100px;
+				background-color: #dddcd9;
+
+				margin: 100px auto;
+
+				position: sticky;
+				top: 10px;
+				z-index: 100;
+			}
+			/*
+				(绝对定位)
+				水平方向布局
+					添加left和right
+					过度约束优先调整right或auto
+				垂直方向布局
+					添加top和bottom
+					过度约束优先调整bottom或auto
+				居中设置
+					margin: auto;
+					top: 0;
+					bottom: 0;
+					left: 0;
+					right: 0;
+			*/
+	</style>
+</head>
+<body>
+	<div class="box1">1</div>
+	<div class="box2">2</div>
+	<div class="box3">3</div>
+	<br/>
+
+	<div class="box11">1</div>
+	<div class="box21">2</div>
+	<div class="box31">3</div>
+	<div class="box41">4
+		<div class="box51">5
+			<div class="box61">6
+			</div>
+		</div>
+	</div>
+	<br/>
+
+	<div class="box12">12</div>
+	<br/>
+
+	<div class="box13">13</div>
+	<br/>
+</body>
+</html>

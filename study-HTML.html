@@ -1,0 +1,215 @@
+<!doctype html>				<!--  <!doctype> 声明必须位于 HTML5 文档中的第一行  定义文档类型  -->
+
+<!--  10&12  -->
+
+<html>						<!--  <html>定义 HTML 文档  -->
+
+<head>						<!--  <head>定义关于文档头部的信息  -->
+	<meta charset="utf-8">		<!--  对于中文网页需要使用 <meta charset="utf-8"> 声明编码  -->
+	<title>studyHTML</title>			<!--  <title>定义文档的标题  -->
+</head>
+
+<body>						<!--  <body>定义文档的主体  -->
+
+<!-- 14 -->
+	<h1> h1 </h1>
+	<h2> h2 </h2>
+	<h3 id="GET"> h3 </h3>
+		<!--  <hX>定义文档的标题 X=1~6 标题文字大小依次递减 -->
+
+<!-- 15 -->
+	<p> p </p>
+		<!--  <p>定义段落  -->
+	<br/>
+		<!-- <br/>换行符 -->
+
+<!-- 17 -->
+	<p><strong> strong </strong></p>
+	<p><b> b </b></p>
+		<!-- <strong><b> 粗体 -->
+
+	<p><em> em </em></p>
+	<p><i> i </i></p>
+		<!-- <em><i> 斜体 -->
+
+	<p><del> del </del></p>
+	<p><s> s </s></p>
+		<!-- <del><s>删除线 -->
+
+	<p><ins> ins </ins></p>
+	<p><u> u </u></p>
+		<!-- <ins><u> 下划线 -->
+
+<!-- 18 -->
+	<!-- <div>单独一行<span>可多个同一行  容器 -->
+
+<!-- uncertain -->
+	<address> 陕西省西安市长安区西安电子科技大学 </address>				<!-- <address> 地址，显示斜体 -->
+	<code> goto LABEL; </code> <br/>		<!-- <code>显示代码 -->
+	<pre>	#include &lt;stdio.h&gt;		<!-- &lt; less than，显示<  &gt; greater than，显示> -->
+			int main ()
+			{
+				printf("Hello,world! \n");
+				return 0;
+			} </pre>					<!-- <pre>显示预格式化文本 -->
+	<q> We Are The World </q>			<!-- <q>引用简短文本，会对文本显示双引号“” -->
+	<blockquote> 过去的事就过去了，永远别回头，无论是为了找借口、为自己辩解还是找乐子，永远都不要回头。<br/>你现在是什么人，就是什么人，世界眼下是什么样，就是什么样。<br/>——《教父3》 </blockquote>		<!-- <blockquote>引用长文本，会对文本执行缩进“” -->
+	<hr/>				<!-- <br/>换行符 <hr/>分隔符  均只有开始标签，没有结束标签 -->
+
+<!-- 19-21 22-25 -->
+	<img src="P1.JPG" title="P1" width="800" alt="Oh no !!!">
+		<!-- /相对路径（/上一级  ../下一级）  \绝对路径 -->
+			<!-- src 图像的 URL 地址 -->
+			<!-- title 定义关于元素的额外信息，在鼠标移到元素上时显示一段工具提示文本 -->
+			<!-- width&height 定义图像的宽度|高度 -->
+			<!-- alt 为图像定义一串预备的可替换的文本 -->
+	<!--  -->
+	<br/>
+
+<!-- 26-27-28 -->
+	<a href="https://www.runoob.com/html/html-tutorial.html" target="_blank">参考资料1</a>
+		<!--  <a>是一个超链接  -->
+			<!--  href:超链接地址  -->
+			<!--  target:新窗口打开方式： _self 当前窗口打开  _blank 新窗口打开  -->
+	<a href="https://www.runoob.com/html/html-tutorial.html" target="_self">参考资料2</a>
+		<!--  外部链接  内部链接:网站内部网页都相互链接 空链接："#" 下载链接：文件.exe或者压缩包.zip形式 网页元素链接
+					锚点链接：到页面中某个位置(id=……) -->
+	<a href="t1.html" target="_blank">参考资料3</a>
+	<a href="#" target="_self">参考资料4</a>
+	<a href="#GET">BUT</a>
+	<br/>
+
+<!-- 29 -->
+	<!-- &nbsp;空格 &lt;小于号  &gt;大于号 -->
+	<p> &lt;&nbsp;&gt; </p>
+
+<!-- 33-35 37-39 --> <!-- 表格 显示数据 -->
+	<table border="1" width="500" align="center" cellpadding="10" cellspacing="">
+		<caption> trX-tdX </caption>
+		<thead>
+			<tr>
+				<th> tr1 </th>
+				<th> tr2 </th>
+				<th> tr3 </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td> tr1-td1 </td>
+				<td> tr1-td2 </td>
+				<td> tr1-td3 </td>
+			</tr>
+			<tr>
+				<td rowspan="2"> tr2-td1 <br><br> tr3-td1 </td>
+				<td> tr2-td2 </td>
+				<td> tr2-td3 </td>
+			</tr>
+			<tr>
+				<td colspan="2"> tr3-td2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tr3-td3 </td>
+			</tr>
+		</tbody>
+	</table>
+		<!-- <table> 定义表格 -->
+			<!-- border:确定表格的边框宽度 默认为空 -->
+			<!-- width|height:确定表格宽度|高度 -->
+			<!-- align:表格相对周围元素的对齐方式 -->
+			<!-- cellpadding:表格单元格边缘线及其内容间的空隙 默认为1像素 -->
+			<!-- cellspacing:表格单元格间的空隙 默认为2像素 -->
+		<!-- <caption> 定义表格的标题  必须紧随 table 标签之后  只能对一个表格定义一个标题 通常标题会被居中于表格之上 -->
+		<!-- <tr> 定义表格的行 -->
+		<!-- <td> 定义表格行内的单元格 -->
+			<!-- rowspan:跨行合并单元格 -->
+			<!-- colspan:跨列合并单元格 -->
+		<!-- <th> 定义表头单元格 加粗居中显示 -->
+		<!-- <thead><tfoot><tbody> 定义表格表头/主体/页脚 可选可不选 -->
+		<!-- 跨行合并单元格rowspan：最上侧单元格为目标单元格	跨列合并单元格colspan：最左侧单元格为目标单元格 -->
+
+<!-- 40-43 --> <!-- 列表 布局 -->
+<!-- 无序列表 -->
+	<h2>水果</h2>
+	<ul>
+		<li>西瓜</li>
+		<li>桃子</li>
+		<li>苹果</li>
+	</ul>
+		<!-- <ul> 无序列表 显示为小圆点 -->
+		<!-- <li> 列表项 内部可插入各种容器 -->
+<!-- 有序列表 -->
+	<h2>蔬菜</h2>
+	<ol>
+		<li>西红柿 4.3￥</li>
+		<li>萝卜 7.6￥</li>
+		<li>窝瓜 12.2￥</li>
+	</ol>
+		<!-- <ol> 有序列表 显示为数字 -->
+<!-- 自定义列表 -->
+	<dl>
+		<dt>人物</dt>
+		<dd>甲</dd>
+		<dd>乙</dd>
+		<dd>丙</dd>
+		<dd>丁</dd>
+	</dl>
+		<!-- <dl> 描述列表 -->
+		<!-- <dt> 定义项目 -->
+		<!-- <dd> 描述项目 -->
+<!-- 45-55 表单标签 -->
+	<form action="study-HTML.html" method="GET" name="test">
+			<!-- <form>定义表单域 -->
+				<!-- action URL地址 -->
+				<!-- method 提交方式 -->
+				<!-- name 表单域名称 -->
+		<input type="text" name="text" value="请输入用户名"> <br/>
+			<!-- 文本框 -->
+				<!-- value 可显示提示性内容 -->
+		<input type="password" name="password" maxlength="10"> <br/>
+			<!-- 密码框 -->
+				<!-- maxlen 定义输入文本的最大长度 -->
+		<input type="radio" name="sex" value="male" checked>male
+		<input type="radio" name="sex" value="female">female <br/>
+			<!-- 单选框 -->
+		<input type="checkbox" name="hobby" value="run">run
+		<input type="checkbox" name="hobby" value="walk">walk <br/>
+			<!-- 复选框 -->
+				<!-- name 定义单选框所属的类 规定实际的名称 -->
+				<!-- value 定义返回服务器的值 规定实际的值 -->
+				<!-- checked 定义最初被选中的状况 -->
+		<input type="submit" value="submit">
+			<!-- 定义提交按钮 -->
+		<input type="reset" value="reset"> <br/>
+			<!-- 定义重置按钮 -->
+		<input type="button" width="20" height="10"> <br/>
+			<!-- 定义普通按钮 -->
+		<input type="file">  <br/>
+			<!-- 定义文件域 -->
+		<label>LABEL</label> <br/>
+			<!-- 定义标签  用于为input定义标注 -->
+				<!-- for 绑定相关元素的name属性 -->
+		<select name="direction">
+			<option>north</option>
+			<option>east</option>
+			<option>west</option>
+			<option selected>south</option>
+		</select> <br/>
+			<!-- 定义下拉列表 -->
+			<!-- 定义下拉列表的各项 -->
+			<!-- selected选择默认显示的项 -->
+		<textarea cols="20" rows="20">input</textarea> <br/>
+			<!-- 定义文本域 -->
+	</form>
+
+	<audio src="music/see you again.mp3" controls autoplay loop></audio>
+		<!-- 音频标签 src音频文件源 controls显示控制控件 autoplay自动播放 loop循环播放 -->
+		<!--  -->
+	<video src="video/goto.MOV" controls autoplay loop width="1000" muted></video>
+		<!-- 视频标签 muted实现默认初始静音播放 -->
+	<!-- 语义布局标签 -->
+		<!-- header 网页头部 -->
+		<!-- nav 网页导航 -->
+		<!-- footer 网页底部 -->
+		<!-- aside 网页侧边栏 -->
+		<!-- section 网页区块 -->
+		<!-- article 网页文章 -->
+</body>
+
+</html>

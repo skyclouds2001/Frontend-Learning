@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>study-CSS-1</title>
+
+	<style type="text/css">
+		/*
+		 * CSS注释
+		 */
+
+	/* 简单选择器 */
+
+		 /* 元素选择器 标签名选中 */
+		 p {
+		 	color: red;
+		 }
+		 /* id选择器 id值选中 */
+		 /* 一个元素只能有一个id值 */
+		 #we {
+		 	color: green;
+		 }
+		 /* 类选择器 class属性选中 */
+		 /* 一个类可以有多个class值 */
+		 .p1 {
+		 	color: grey;
+		 }
+		 /* 通配选择器 */
+		 * {
+		 	font-size: 20px;
+		 }
+
+	/* 复合选择器 */
+
+		 /* 交集选择器 */
+		 /* 选中同时符合多个条件的元素 */
+		 /* 交集中有元素选择器，则元素选择器必须为开头 */
+		 div.p5 {
+		 	font-size: 40px;
+		 }
+
+		 /* 并集选择器 */
+		 /* 同时选中多个选择器对应的元素 */
+		 .p3, .p4 {
+		 	font-style: oblique;
+		 }
+
+	/* 关系选择器 */
+
+			/*
+			父元素：直接包含子元素的元素
+			子元素：直接被父元素包含的元素
+			祖先元素：直接或间接包含后代元素的元素
+			后代元素：直接或间接被祖先元素包含的元素
+			兄弟元素：拥有相同父元素的元素
+			*/
+
+		/* 子元素选择器 */
+		/* 选中指定父元素的指定子元素 */
+		div > p {
+			font-size: 30px;
+		}
+
+		/* 后代元素选择器 */
+		/* 选中指定元素的指定后代元素 */
+		div span {
+			color: blue;
+		}
+
+		/* 相邻兄弟选择器 */
+		/* 选择下一个相邻兄弟元素 */
+		.d2p1 + .d2p2 {
+			font-size: 50px;
+		}
+
+		/* 通用兄第选择器 */
+		/* 选择下面所有兄弟元素 */
+		.d2p1 ~ .d2s2 {
+			color: green;
+		}
+
+	/* 属性选择器 */
+
+		/* [属性名]，选择含有指定属性的元素 */
+		[id] {
+			font-size: 40px;
+		}
+		/* [属性名 = 属性值]，选择含有指定属性和属性值的元素 */
+		[class = d2s2] {
+			font-size: 50px;
+		}
+		/* [属性名 ^= 属性值]，选择属性值以指定值开头的元素 */
+		/* [属性名 $= 属性值]，选择属性值以指定值结尾的元素 */
+		/* [属性名 *= 属性值]，选择属性值中含有某值的元素 */
+
+	/* 伪类选择器 */
+		/* :first-child，选中父元素的第一个子元素 */
+		/* :last-child，选中父元素的最后一个子元素 */
+		/* :nth-child()，选中父元素的第 n 个子元素 */
+			/* n，选中父元素的所有子元素 */
+			/* 2n 或 even，选中父元素的所有偶数个子元素 */
+			/* 2n+1 或 odd，选中父元素的所有奇数个子元素 */
+		ul > li:first-child {
+			font-size: 30px;
+		}
+		ul > li:nth-child(odd) {
+			color: green;
+		}
+		/* :first-of-type，选中父元素中第一个同类的子元素 */
+		/* :last-of-type，选中父元素中最后一个同类的子元素 */
+		/* :nth-of-type()，选中父元素中第 n 个同类的子元素 */
+
+		/* :not() */
+		/* 将符合条件的元素从选择器中去除 */
+
+		/* :link，用于表示没访问过的链接（正常链接）*/
+		/* :visited，用于表示访问过的链接 */
+			/* 这个伪类只能修改链接颜色 */
+		/* :hover，用于表示鼠标移入状态 */
+			/* 不止超链接有这个伪类 */
+		/* :active，用于表示处于点击状态 */
+			/* 不止超链接有这个伪类 */
+		/***** 建议按顺序 *****/
+		.a:link {
+			color: orangered;
+		}
+		.a:visited {
+			color: greenyellow;
+		}
+		.a:hover {
+			color: skyblue;
+		}
+		.a:active {
+			color: inherit;
+		}
+
+	/* 伪元素选择器 */
+		/* ::first-letter，表示第一个字母 */
+		/* ::first-line，表示第一行 */
+		/* ::selection，表示用户鼠标选中的内容 */
+		/* ::before，表示元素的开始 */
+		/* 必须结合 content 属性使用 */
+		/* ::after，表示元素的最后 */
+		/* 必须结合 content 属性使用 */
+		#we::first-letter {
+			background-color: orangered;
+		}
+
+		::selection {
+			color: darkred;
+			background-color: lightgoldenrodyellow;
+		}
+
+		/* 继承 */
+		/* 概念：样式的继承是指，我们为一个元素设置的样式也会应用到它的后代元素上 */
+		/* 注意：不是所有样式都会被继承
+			背景、布局相关的样式不会被继承 */
+			/* 可通过查看继承性确定 */
+
+		/* 覆盖（样式权重）（选择器权重）*/
+		/* 内联样式：		1,0,0,0 */
+		/* id 选择器：		0,1,0,0 */
+		/* 类和伪类选择器：	0,0,1,0 */
+		/* 元素选择器：		0,0,0,1 */
+		/* 通配选择器：		0,0,0,0 */
+		/* 继承的样式：		没有优先级 */
+
+		/* !important 最高优先级 */
+
+	</style>
+
+	<link rel="stylesheet" type="text/css" href="study-CSS.css">
+</head>
+
+<body>
+	<!-- 最新CSS3 -->
+	<!-- HTML结构 CSS表现 JavaScript行为 -->
+
+	<!-- 内联样式 标签内使用style属性设置 不推荐使用 优先级高 -->
+	<!-- 内部样式表 写在head内的style标签内 较少使用 优先级中 -->
+	<!-- 外部样式表 独立css文件并使用link标签导入html文件 推荐使用 优先级低 -->
+
+	<!-- CSS语法 选择器 声明块 声明 -->
+
+	<p style="color: red; font-size: 50px;">
+		We are the world~
+	</p>
+	<p id="we">
+		We will be together
+	</p>
+	<p class="p1" class="p">p1</p>
+	<p class="p2" class="p">p2</p>
+	<p class="p3" class="p">p3</p>
+	<p class="p4" class="p">p4</p>
+	<p class="p5" class="p">p5</p>
+	<div class="p4">
+		div
+		<p class="d1p1">p in div 1</p>
+		<p class="d1p2">p in div 2</p>
+		<span class="d1s1">span in div 1</span><br/>
+		<span class="d1s2">span in div 2</span><br/>
+	</div>
+	<div class="p5">
+		div
+		<p class="d2p1">p in div 1</p>
+		<p class="d2p2">p in div 2</p>
+		<span class="d2s1">span in div 1</span><br/>
+		<span class="d2s2">span in div 2</span><br/>
+	</div>
+	<ul>
+		<!-- <span>s0</span> -->
+		<li class="li1">li1</li>
+		<li class="li2">li2</li>
+		<li class="li3">li3</li>
+		<li class="li4">li4</li>
+		<li class="li5">li5</li>
+	</ul>
+	<a class="a" href="#" target="_blank"><strong>A</strong></a>
+
+	<p>
+		GO
+		<span>go</span>
+	</p>
+</body>
+
+</html>

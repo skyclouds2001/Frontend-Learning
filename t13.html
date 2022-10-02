@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>添加删除员工</title>
+
+    <link rel="stylesheet" type="text/css" href="reset.css">
+
+    <link rel="stylesheet" type="text/css" href="t13.css">
+</head>
+
+<body>
+    <table id="employeeTable">
+        <tr>
+            <th>Name</th>
+            <th>E-mail</th>
+            <th>Salary</th>
+            <th>Operate</th>
+        </tr>
+        <tr>
+            <td>Tom</td>
+            <td>tom@163.com</td>
+            <td>5000</td>
+            <td><a href="javascript: ;">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Sarah</td>
+            <td>sarah@163.com</td>
+            <td>10000</td>
+            <td><a href="javascript: ;">Delete</a></td>
+        </tr>
+    </table>
+
+    <div id="inputDiv">
+        <table>
+            <caption>添加新员工</caption>
+            <tr>
+                <td>name:</td>
+                <td>
+                    <input type="text" name="name" id="name">
+                </td>
+            </tr>
+            <tr>
+                <td>e-mail:</td>
+                <td>
+                    <input type="text" name="email" id="email">
+                </td>
+            </tr>
+            <tr>
+                <td>salary:</td>
+                <td>
+                    <input type="text" name="salary" id="salary">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" name="button" id="submit">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script type="text/javascript" src="t13.js"></script>
+</body>
+
+</html>

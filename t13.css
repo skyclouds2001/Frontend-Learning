@@ -1,0 +1,89 @@
+#employeeTable {
+    border: 1px black solid;
+    margin: 50px auto;
+}
+
+#employeeTable td, #employeeTable th {
+    display: inline-block;
+
+    box-sizing: border-box;
+
+    border: 1px black solid;
+    margin: 1px;
+    padding: 10px;
+
+    height: auto;
+
+    text-align: center;
+}
+
+#employeeTable th {
+    font-weight: bold;
+}
+
+#employeeTable td:first-child, #employeeTable th:first-child {
+    width: 100px;
+}
+
+#employeeTable td:nth-child(2), #employeeTable th:nth-child(2) {
+    width: 200px;
+}
+
+#employeeTable td:nth-child(3), #employeeTable th:nth-child(3) {
+    width: 100px;
+}
+
+#employeeTable td:last-child, #employeeTable th:last-child {
+    width: 100px;
+}
+
+#inputDiv {
+    box-sizing: border-box;
+
+    width: 500px;
+    height: 300px;
+
+    border: 1px rgb(117, 117, 117) solid;
+    margin: auto;
+    padding: 10px;
+}
+
+#inputDiv table {
+    margin: auto;
+}
+
+#inputDiv caption, #inputDiv tr {
+    display: block;
+
+    margin: 20px auto;
+}
+
+#inputDiv caption {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#inputDiv td {
+    display: inline-block;
+
+    margin: 0px 10px;
+}
+
+#inputDiv input[type = "text"] {
+    width: 300px;
+    height: 25px;
+
+    font-size: 20px;
+}
+
+#inputDiv tr {
+    text-align: center;
+}
+
+#inputDiv input[type="submit"] {
+    width: 50px;
+    height: 25px;
+
+    font-size: 15px;
+    font-weight: bold;
+}

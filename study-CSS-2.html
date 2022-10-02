@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>study-CSS-2</title>
+
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<style type="text/css">
+		/***** 单位 *****/
+		/* 绝对长度 px像素 */
+		/*
+			相对长度 %百分比，相对父元素
+			em相对字体大小，1em = 1font-size
+			rem相对根元素字体大小
+		*/
+		.box1 {
+			background-color: orange;
+			width: 200px;
+			height: 200px;
+		}
+		.box2 {
+			background-color: blue;
+			width: 50%;
+			height: 50%;
+		}
+		.box3 {
+			background-color: seagreen;
+			width: 20em;
+			height: 20em;
+		}
+
+		/***** 颜色 *****/
+		/*
+			直接使用颜色名
+			RGB rgb( , , )
+			RGBA rgba( , , )
+			HEX #rrggbb #rgb
+			HSL 色相、饱和度、亮度 hsl( , , )
+			HSLA HSL+A
+		*/
+		.box11 {
+			background-color: rgb(23, 34, 167);
+			width: 200px;
+			height: 200px;
+		}
+
+		/***** 文档流   normal flow *****/
+		/*
+			网页是一个多层结构，通过CSS可以给每层设置样式，用户只能看到最上一层
+			这些层中，最底下的一层成为文档流，我们创建的元素默认都在文档流中排列
+
+			元素——在文档流中|不在文档流中
+
+			在文档流中
+				块元素————独占一行、默认宽度为父元素宽度、默认高度由内容撑开
+				行内元素————不独占一行，只占自身大小、自左向右排列，自动换行、默认宽度&默认高度由内容撑开
+
+			脱离文档流
+				块元素————不独占一行、默认宽度&默认高度由内容撑开
+				行内元素————变为块元素
+				通过设置float、position属性实现
+		*/
+
+		/***** 盒子模型 *****/
+		/*
+			CSS将所有元素设置为一个矩形盒子
+			页面布局即为将不同盒子摆放到不同位置
+
+			margin外边距(属于盒子外部)
+			border边框
+			padding内边距
+			element元素 内容区
+		*/
+		.box21 {
+			/***** 内容区 *****/
+			/*
+				width宽度    默认值为auto
+				height高度
+			*/
+			width: 200px;
+			height: 200px;
+			/* 内容区&内边距 */
+			background-color: lightyellow;
+			/* 文字颜色 */
+			color: skyblue;
+
+			/***** 边框 border *****/
+			/*
+				border-width边框宽度
+				border-color边框颜色
+				border-style边框样式
+			*/
+			border-width: 10px;
+			border-color: seagreen;
+			border-style: solid;
+			/*
+				border-width
+				指定4条边的颜色
+				4个值 上-右-下-左
+				3个值 上-左右-下
+				2个值 上下-左右
+				1个值 上下左右
+				默认为3px
+
+				border-xxx-width
+				xxx为top、right、bottom、left
+				单独指定某一边的宽度
+			*/
+			/*
+				border-color
+				指定边框颜色
+				默认为黑色
+
+				border-xxx-color
+			*/
+			/*
+				border-style
+				指定边框样式
+					solid 实线
+					dotted 点状虚线
+					dashed 虚线
+					double 双线
+					none 无样式
+
+				border-xxx-style
+			*/
+			/*
+				简写属性
+				border 无顺序要求 一般 width color style
+				border-xxx
+			*/
+
+			/***** 内边距 padding *****/
+			/*
+				padding 设置内边距  简写属性
+				padding-xxx
+				默认是0
+
+				背景颜色会延伸到内边距上
+				内边距设置会影响盒子大小
+			*/
+			padding: 10px;
+			/* 盒子大小由边框、内边距、内容区决定，即可见块部分 */
+
+			/***** 外边距 margin *****/
+			margin: 10px;
+			/*
+				margin 设置外边距  简写属性
+				margin-xxx
+				默认是0
+
+				外边距设置不会影响盒子大小但会影响盒子位置
+
+				左、上移动本元素
+				右、下移动其他元素
+			*/
+		}
+
+		/***** 水平方向布局 *****/
+		/*
+			margin-left		//0
+			border-left		//medium
+			padding-left	//0
+			width 			//auto
+			padding-right	//0
+			border-right	//medium
+			margin-right 	//0
+			之和是
+			父元素内容区宽度
+		*/
+		/*
+			若初始等式不满足，即过渡约束，会自动调整
+				七个值无auto，浏览器会自动调整margin-right
+				七个值中margin-left、margin-right、width中有一个为auto，自动调整auto的那个
+				七个值中margin-left、margin-right、width中有二至三个为auto，若width为定值，调整margin-left与margin-right且相等；否则，width调整为最大，剩余的auto的自动调整为0
+		*/
+		.out {
+			width: 800px;
+			height: 200px;
+			border: 10px red solid;
+		}
+		.in {
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+
+		/***** 垂直方向布局 *****/
+		/* 默认情况父元素高度由子元素撑开 */
+		/*
+			父元素高度指定且子元素高度超过父元素高度，即溢出
+			设置overflow属性实现
+				visible，默认值，子元素溢出，在父元素外部显示
+				hidden，溢出父元素部分不显示
+				scroll，生成水平和垂直方向滚动条，通过滚动条查看全部内容
+				auto，根据需要生成滚动条，哪个方向溢出就生成滚动条
+				overflow-x、overflow-y
+		*/
+		.out0 {
+			width: 800px;
+			height: 200px;
+			border: 10px red solid;
+		}
+		.in0 {
+			width: 200px;
+			height: 200px;
+			background-color: green;
+
+			overflow: scroll;
+		}
+
+		/***** 外边距折叠 *****/
+		/* 相邻垂直方向外边距折叠现象 */
+		/*
+			兄弟元素
+				正正取大值
+				正负取和
+				负负取绝对值大者
+				常常无需处理
+			父子元素
+				子元素上边距会传递给父元素
+				常常需要处理
+					子元素margin-top转父元素padding-top
+					父元素添加边距
+					转浮动布局，脱离文档流
+					取消相邻
+			空元素
+				父元素仅有一个空子元素，子元素上下边距合并
+		*/
+		.box31, .box32 {
+			width: 200px;
+			height: 200px;
+			font-size: 100px;
+		}
+		.box31 {
+			background-color: #bfa;
+			margin-bottom: 100px;
+		}
+		.box32 {
+			background-color: #adf;
+			margin-top: 100px;
+		}
+
+		/***** 行内元素模型 *****/
+		.s {
+			background-color: yellow;
+			/* width与height不支持 */
+			/* padding border 垂直方向不影响页面布局 margin 垂直方向不影响布局 */
+			border: 10px red solid;
+			padding: 10px;
+			margin: 10px;
+		}
+
+		/***** display属性 *****/
+		/*
+			inline 	设置为行内元素
+			block	设置为块元素
+			inline-block	设置为行内块元素
+				行内块，既可设置宽度和高度又不会独占一行
+				可用于水平布局
+			table	设置为表格
+			none 	隐藏元素，不占据文档流中空间
+					visibility 属性隐藏后占据文档流中位置
+
+			visibility 属性
+			设置元素显示状态
+				visible 默认 正常显示
+				hidden 隐藏 不显示
+		*/
+
+		/***** 浏览器默认样式 *****/
+		/*
+			浏览器会对 HTML 元素施加默认样式，但是不同浏览器的默认样式可能不同，通常情况下需要去除浏览器默认样式
+				简单处理
+				导入重置样式表
+					reset.css		清除所有默认样式
+					normalize.css	统一所有默认样式
+		*/
+	</style>
+</head>
+
+<body>
+	<div class="box1">
+		<div class="box2"></div>
+	</div>
+	<div class="box3"></div>
+
+	<div class="box11"></div>
+
+	<div class="box21"><span>aaa</span></div>
+
+	<div class="out"><div class="in"></div></div>
+
+	<div class="out0"><div class="in0">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br/>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br/>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br/>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br/>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br/>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br/>qqqqqqqqqqqqqqqqqqqqqaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div></div>
+
+	<div class="box31">1</div>
+	<div class="box32">2</div>
+
+	<br/><span class="s">sedfr</span>
+</body>
+</html>

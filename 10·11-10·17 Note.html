@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>1</title>
+
+    <script type="text/javascript">
+        function * gen() {
+            console.log("GEN");
+        }
+
+        gen();          //无效
+        gen().next();   //有效
+
+        function * ge() {
+            console.log("1");
+            yield 'a';
+            console.log("2");
+            yield 'b';
+            console.log("3");
+            yield 'c';
+            console.log("4");
+        }
+
+        // for(let v of ge()){
+        //     console.log(v);
+        // }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

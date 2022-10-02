@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html>
+
+<!-- 高度塌陷 -->
+<!-- 由于子元素浮动导致父元素失去高度 -->
+
+<head>
+	<meta charset="utf-8">
+	<title>65</title>
+	<style type="text/css">
+		/* 直接设置父元素高度 不推荐 */
+		.outer1 {
+			border: 10px red solid;
+			height: 100px;
+		}
+		.inner1 {
+			width: 100px;
+			height: 100px;
+			background-color: #bfa;
+			float: left;
+		}
+
+		/* BFC 块级格式化环境 */
+		/*
+			开启BFC元素变成独立布局区域
+				开启BFC元素不被浮动元素所覆盖
+				开启BFC父元素和子元素外边距不重叠
+				开启BFC元素可以包含浮动子元素
+
+				父元素设置float
+				父元素设置display：inline-block
+				父元素设置overflow：hidden auto 推荐
+		*/
+
+		/* 转BFC */
+		.outer2 {
+			border: 10px red solid;
+			display: inline-block;
+		}
+		.inner2 {
+			width: 100px;
+			height: 100px;
+			background-color: #bfa;
+			float: left;
+		}
+
+		.outer3 {
+			border: 10px red solid;
+			overflow: auto;
+		}
+		.inner3 {
+			width: 100px;
+			height: 100px;
+			background-color: #bfa;
+			float: left;
+		}
+
+		/* :after 伪元素撑起父元素高度 */
+		.outer4 {
+			border: 10px red solid;
+		}
+		.outer4:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.inner4 {
+			width: 100px;
+			height: 100px;
+			background-color: #bfa;
+			float: left;
+		}
+
+		/* 空容器 clear: both; */
+		.outer5 {
+			border: 10px red solid;
+		}
+		.inner5 {
+			width: 100px;
+			height: 100px;
+			background-color: #bfa;
+			float: left;
+		}
+		.inner6 {
+			clear: both;
+		}
+		/* clearfix */
+		.outer8 {
+			border: 10px red solid;
+		}
+		.inner8 {
+			width: 100px;
+			height: 100px;
+			background-color: #bfa;
+			float: left;
+		}
+		.clearfix::before, .clearfix::after {
+			content: '';
+			display: table;
+			clear: both;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="outer1">
+		<div class="inner1"></div>
+	</div>
+	<div class="outer2">
+		<div class="inner2"></div>
+	</div>
+	<div class="outer3">
+		<div class="inner3"></div>
+	</div>
+	<div class="outer4">
+		<div class="inner4"></div>
+	</div>
+	<div class="outer5">
+		<div class="inner5"></div>
+		<div class="inner6"></div>
+	</div>
+	<div class="outer8 clearfix">
+		<div class="inner8"></div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>京东导航条</title>
+
+    <link rel="stylesheet" type="text/css" href="reset.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.0/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.0/css/brands.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.0/css/solid.min.css">
+
+    <style>
+        body {
+            background-color: rgb(204, 252, 204);
+        }
+
+        .maindiv {
+            width: auto;
+            height: auto;
+            background-color: #e3e4e5;
+
+            border: 1px solid #ddd;
+
+            font-size: 6px;
+        }
+        .maindiv::before, .maindiv::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .content {
+            width: 70%;
+            height: inherit;
+
+            margin: 0px auto;
+        }
+
+        .left {
+            float: left;
+
+            position: relative;
+        }
+
+        .left li {
+            float: left;
+            display: block;
+
+            padding: 10px 10px;
+
+            color: #888;
+
+            border: 1px transparent solid;
+            border-bottom: 0px;
+        }
+        .left li:hover {
+            color: rgb(231, 18, 18);
+            background-color: #fff;
+
+            position: relative;
+
+            border: 1px #aaa solid;
+            border-bottom: 1px #fff solid;
+
+            z-index: 9999;
+        }
+
+        .position:hover .leftli {
+            background-color: #fff;
+            position: relative;
+
+            border: 1px #aaa solid;
+            border-bottom: 1px #fff solid;
+
+            z-index: 9999;
+        }
+
+        .left li a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .position {
+            width: 320px;
+            height: 400px;
+            background-color: white;
+
+            border: 1px #bbb solid;
+            box-shadow: 0 2px 2px rgba(255, 255, 255, .2);
+
+            position: absolute;
+            top: 33px;
+            left: 0px;
+
+            visibility: hidden;
+
+            z-index: 999;
+        }
+        .position:hover {
+            visibility: visible;
+        }
+
+        .left li:hover + .position {
+            visibility: visible;
+        }
+
+        .right {
+            float: right;
+
+            padding: 10px;
+        }
+
+        .right li {
+            float: left;
+            display: block;
+
+            padding: 0px 10px;
+
+            color: #888;
+        }
+        .right li:hover {
+            color: rgb(231, 18, 18);
+        }
+
+        .right li.border {
+            border-left-width: 1px;
+            border-left-color: #929696;
+            border-left-style: solid;
+        }
+
+        .right li a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .right li div {
+            color: #888;
+        }
+
+        .register, .purchase span, .left div {
+            color: rgb(231, 18, 18);
+        }
+
+        .arrows {
+            display: inline-block;
+
+            padding: auto;
+            margin: auto;
+
+            border-width: 0;
+            border-color: #949696;
+            border-style: solid;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="maindiv">
+
+        <div class="content">
+
+            <ul class="left">
+                <li class="leftli">
+                    <div class="fas fa-map-marker-alt"></div>
+                    <a href="javascript:;">
+                        浙江
+                    </a>
+                </li>
+                <div class="position"></div>
+            </ul>
+
+            <ul class="right">
+                <li class="login">
+                    <a href="javascript:;">
+                        你好，请登录
+                    </a>
+                </li>
+                <li class="register" style="color: rgb(231, 18, 18);">
+                    <a href="javascript:;">
+                        免费注册
+                    </a>
+                </li>
+                <li class="myorder border">
+                    <a href="javascript:;">
+                        我的订单
+                    </a>
+                </li>
+                <li class="myjd border">
+                    <a href="javascript:;">
+                        我的京东&nbsp;
+                    </a>
+                    <div class="fas fa-angle-down"></div>
+                </li>
+                <li class="jdmember border">
+                    <a href="javascript:;">
+                        京东会员
+                    </a>
+                </li>
+                <li class="purchase border">
+                    <a href="javascript:;">
+                        <span>企业采购&nbsp;</span>
+                    </a>
+                    <div class="fas fa-angle-down"></div>
+                </li>
+                <li class="serve border">
+                    客户服务&nbsp;
+                    <div class="fas fa-angle-down"></div>
+                </li>
+                <li class="navigation border">
+                    网站导航&nbsp;
+                    <div class="fas fa-angle-down"></div>
+                </li>
+                <li class="cellphone border">
+                    手机京东
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
