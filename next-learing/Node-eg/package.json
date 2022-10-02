@@ -1,0 +1,23 @@
+{
+  "name": "node-eg",
+  "version": "1.0.0",
+  "description": "node studying",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run"
+  },
+  "keywords": [
+    "node",
+    "study"
+  ],
+  "author": "CSY",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "nodemon": "^2.0.16"
+  }
+}
