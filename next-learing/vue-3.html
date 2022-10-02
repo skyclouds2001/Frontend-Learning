@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>vue-3</title>
+
+    <!-- <link rel="stylesheet" type="text/css" href="./lib/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="./lib/reset.css"/>
+
+    <style type="text/css"></style> -->
+
+    <!-- <script type="text/javascript" src="./lib/jquery-3.6.0.min.js"></script> -->
+    <script type="text/javascript" src="./lib/vue.min.js"></script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div>
+            <input type="text" v-model="val0">
+            <span>{{val0}}</span>
+        </div>
+
+        <div>
+            <textarea v-model="val1" style="resize: none;"></textarea>
+            <span>{{val1}}</span>
+        </div>
+
+        <div>
+            <input type="checkbox" value="a" v-model="val2">
+            <input type="checkbox" value="b" v-model="val2">
+            <span>{{val2.reduce((pre, cur) => pre.trim().length !== 0 ? pre + '-' + cur: cur, '')}}</span>
+        </div>
+
+        <div>
+            <input type="radio" value="a" v-model="val3">
+            <input type="radio" value="b" v-model="val3">
+            <span>{{val3}}</span>
+        </div>
+
+        <div>
+            <select v-model="val4">
+                <option selected disabled value="-">-</option>
+                <option value="a">a</option>
+                <option value="b">b</option>
+                <option value="c">c</option>
+            </select>
+            <span>{{val4}}</span>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        const app = new Vue({
+            el: '#app',
+            data: {
+                val0: '',
+                val1: '',
+                val2: [],
+                val3: '',
+                val4: '',
+            },
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" type="text/css" href="./lib/reset.css">
+    <link rel="stylesheet" type="text/css" href="./lib/normalize.css">
+    <style type="text/css">
+        div {
+            margin: 10px;
+            padding: 10px;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+
+            text-align: center;
+        }
+    </style>
+
+    <script type="text/javascript" src="./lib/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        "use strict";
+        let tag = [
+            {
+                name: 'Tom',
+                id: 1
+            } , {
+                name: 'Lily',
+                id: 2
+            } , {
+                name: 'July',
+                id: 3
+            } , {
+                name: 'James',
+                id: 4
+            }
+        ];
+        let index = 0;
+        $(() => {
+            $('#add').click(() => {
+                if(index < tag.length) {
+                    $('#tb').append(`<tr><td>${tag[index].name}</td><td>${tag[index].id}</td></tr>`);
+                    ++index;
+                } else {
+                    alert('NO MORE PEOPLE!');
+                }
+            });
+
+            $('#delete').click(() => {
+                if(index > 0) {
+                    $('#tb tr:last-child').remove();
+                    --index;
+                } else {
+                    alert('NO TABLE ELEMENT');
+                }
+            });
+
+            $('#storage').click(() => {
+                var n = $('#name').val().trim();
+                var i = $('#id').val().trim();
+                if(n.length !== 0 && i.length !== 0) {
+                    tag.push({
+                        name: n,
+                        id: i
+                    });
+                } else {
+                    alert('UNFAIR INPUT');
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <input type="text" placeholder="姓名" id="name">
+        <input type="text" placeholder="ID" id="id">
+    </div>
+    <div>
+        <button id="add">添加</button>
+        <button id="delete">删除</button>
+        <button id="storage">保存</button>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>序号</th>
+                </tr>
+            </thead>
+            <tbody id="tb">
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>vue-2</title>
+
+    <script type="text/javascript" src="./lib/vue.min.js"></script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+
+</head>
+
+<body>
+
+    <div id="box0">
+        <input id="input0" type="number" v-model:value="val0">
+        <label for="input0">{{val1}}</label>
+    </div>
+
+    <div id="box1">
+        <input id="input1" type="text" v-model:value="val0">
+        <label for="input1">{{val1}}</label>
+    </div>
+
+    <div id="box2">
+        <span>{{val}}</span>
+        <button @click="add">+1</button>
+        <button @click="sub($event)">-1</button>
+        <button @click="doc(2)">+2</button>
+        <button @click="doc(-2)">-2</button>
+    </div>
+
+    <script type="text/javascript">
+        window.onload = function () {
+
+            const box0 = new Vue({
+                el: '#box0',
+                data: {
+                    val0: 0,
+                },
+                computed: {
+                    val1: function () {
+                        return `the number is ${this.val0} in the input box`;
+                    }
+                }
+            });
+
+            const box1 = new Vue({
+                el: '#box1',
+                data: {
+                    val0: 'noquestion',
+                    val1: 'noquestion noquestion',
+                },
+                watch: {
+                    val0: function (newf, oldf) {
+                        this.val1 = String(newf) + ' ' + String(oldf);
+                    },
+                },
+            });
+
+            const box2 = new Vue({
+                el: '#box2',
+                data: {
+                    val: 0,
+                },
+                methods: {
+                    add (e) {
+                        ++this.val;
+                        console.log(e);
+                        console.log(arguments);
+                    },
+                    sub (e) {
+                        --this.val;
+                        console.log(e);
+                        console.log(arguments);
+                    },
+                    doc (index) {
+                        this.val += index;
+                        console.log(arguments);
+                    },
+                },
+            });
+
+        };
+    </script>
+
+</body>
+
+</html>

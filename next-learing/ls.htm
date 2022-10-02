@@ -1,0 +1,56 @@
+<!-- 文档声名，声名当前网页版本 -->
+<!DOCTYPE html>
+<!-- html 根标签，网页中所有元素都写在根元素里边 -->
+<html lang="en">
+  <!-- head 是网页头部，head 中内容不会再网页中直接出现，主要用于帮助浏览器和搜索引擎解析网页 -->
+	<head>
+    <!-- meta 一般用于设置网页元数据，这里 meta 用于设置网页字符集，避免乱码问题 -->
+    <!-- 注意：对于中文网页需要使用 <meta charset="utf-8"> 声明编码，否则会出现乱码 -->
+        <meta charset="utf-8" />
+    <!-- title 中的内容会显示在浏览器标题栏中，搜索引擎会主要根据 title 判断网页主要内容 -->
+        <title>网页标题</title>
+    </head>
+    <!-- body 是 html 的子元素，表示网页的主体，网页中所有可见内容都应该写在 body 里 -->
+    <body>
+    <!-- 这里写的是网页的主体内容 -->
+        <h1>this is a h1 tag</h1>
+        <h2>this is a h2 tag</h2>
+        <h3>this is a h3 tag</h3>
+        <h4>this is a h4 tag</h4>
+        <h5>this is a h5 tag</h5>
+        <h6>this is a h6 tag</h6>
+        <a name="123">这里1</a>
+        <p>this is a p tag</p>
+        <p>this is a p tag too</p>
+        <p>use br tag <br/> like this</p>
+        <hr/>
+        <a id="456">这里2</a>
+        <p>this is a <strong>strong</strong> tap</p>
+        <p>this is a <em>em</em> tap</p>
+        <p>this is a <ins>ins</ins> tap</p>
+        <p>this is a <del>del</del> tap</p>
+        <div style="height: 100vh;"></div>
+        <!-- 跳转到网页 -->
+        <a href="https://baidu.com">百度1</a>
+<!--        实现两个button间的换行-->
+        <br/>
+        <!-- 新窗口打开网页 -->
+        <a href="https://baidu.com" target="_blank">百度2</a>
+        <!-- 链接到同目录下另一个 html 文件 -->
+        <br/>
+        <a href="https://zhuanlan.zhihu.com/p/337959303" >知乎专栏1</a>
+        <br/>
+        <a href="#123" >书签1</a>
+        <br/>
+        <!-- id 选择器实现页面书签，用的较多 -->
+        <a href="#456" >书签2</a>
+        <!-- 页面书签跳转到页面最底部 -->
+        <!-- 假如浏览器找不到已定义的命名锚，那么就会定位到文档的顶端。不会有错误发生。 -->
+        <a href="#">去顶部</a>
+
+        <!-- # 可作为超链接路径占位符 -->
+        <a href="#">我是假的超链接</a>
+        <!-- 也可用下面方式占位，可以实现点击无效果 -->
+        <a href="javascript:">我是假的超链接</a>
+    </body>
+</html>

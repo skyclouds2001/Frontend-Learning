@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" type="text/css" href="./lib/normalize.css">
+    <link rel="stylesheet" type="text/css" href="./lib/reset.css">
+
+    <style type="text/css"></style>
+
+    <script type="text/javascript" src="./lib/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./lib/vue.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script type="text/javascript">
+
+        // const axios = require('axios');
+
+        // get 请求
+        axios.get(url, params)
+        .then(function (response) {
+            // 处理成功情况
+            console.log(response);
+        })
+        .catch(function (error) {
+            // 处理错误情况
+            console.log(error);
+        })
+        .then(function () {
+            // 总是会执行
+        });
+
+        // 支持async/await用法
+        async function getUser() {
+            try {
+                const response = await axios.get('/user?ID=12345');
+                console.log(response);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        // post 请求
+        axios.post(url, {
+            param1,
+            param2,
+        })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+        // 发起多个并发请求
+        function getUserAccount() {
+            return axios.get('/user/12345');
+        }
+
+        function getUserPermissions() {
+            return axios.get('/user/12345/permissions');
+        }
+
+        Promise.all([getUserAccount(), getUserPermissions()])
+        .then(function (results) {
+            const acct = results[0];
+            const perm = results[1];
+        });
+
+        // 常规方法
+        axios({
+            method: 'post',
+            url: '/user/12345',
+            data: {
+                firstName: 'Fred',
+                lastName: 'Flintstone',
+            },
+        });
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
