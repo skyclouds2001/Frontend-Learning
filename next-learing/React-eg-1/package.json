@@ -1,0 +1,19 @@
+{
+  "name": "react-eg",
+  "version": "0.0.0",
+  "description": "react study",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run"
+  },
+  "keywords": [
+    "react",
+    "study"
+  ],
+  "author": "CSY",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

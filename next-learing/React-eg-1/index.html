@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>react-eg</title>
+
+    <script type="text/javascript" src="./node_modules/react/umd/react.development.js"></script>
+    <script type="text/javascript" src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+
+    <style type="text/css"></style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/javascript">
+    const title = React.createElement('h1', null, 'Hello React');
+    ReactDOM.render(title, document.getElementById('root'));
+  </script>
+</body>
+
+</html>
