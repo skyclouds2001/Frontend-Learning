@@ -1,3 +1,3 @@
 # Frontend-Learning
 
-This repository keep some code when I'm learning frontend.
+This repository keep some materials when I'm learning frontend.
