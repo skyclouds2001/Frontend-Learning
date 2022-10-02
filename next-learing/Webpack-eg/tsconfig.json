@@ -1,0 +1,11 @@
+{
+  "include": [],
+  "exclude": [],
+  "compilerOptions": {
+    "sourceMap": true,
+    "declaration": true
+  },
+  "files": [
+    "src/msg.ts"
+  ]
+}
