@@ -1,0 +1,60 @@
+/* pages/category/category.wxss */
+
+page {
+  height: 100%;
+}
+
+.category {
+  height: 100%;
+}
+
+.container {
+  height: calc( 100vh - 90rpx );
+  display: flex;
+}
+
+.menu {
+  flex: 2;
+}
+.menu view {
+  height: 80rpx;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 30rpx;
+}
+.menu .active {
+  color: rgb(235, 68, 80);
+  border-left: 5rpx solid rgb(235, 68, 80);
+}
+
+.content {
+  flex: 5;
+}
+
+.title {
+  height: 80rpx;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.t_delimiter {
+  color: #ccc;
+  padding: 0 10rpx;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.list navigator {
+  width: 33.33%;
+
+  text-align: center;
+}
+.list image {
+  width: 50%;
+}

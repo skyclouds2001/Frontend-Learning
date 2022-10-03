@@ -1,0 +1,133 @@
+/* pages/user/user.wxss */
+
+@import '/styles/iconfont.wxss';
+
+page {
+  background-color: #edebe8;
+}
+
+.user_info_wrap {
+  height: 45vh;
+  background-color: var(--theme-color);
+
+  overflow: hidden;
+
+  position: relative;
+}
+
+.user_info_img {
+  position: relative;
+}
+
+.user_info_img .user_bg {
+  height: 50vh;
+  
+  filter: blur(10rpx);
+}
+
+.user_info_img .user_info {
+  position: absolute;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  top: 30%;
+  text-align: center;
+}
+
+.user_info_img .user_info .user_icon {
+  width: 150rpx;
+  height: 150rpx;
+
+  border-radius: 50%;
+}
+.user_info_img .user_info .user_name {
+  color: white;
+  font-size: 30rpx;
+
+  margin-top: 40rpx;
+}
+
+.user_btn {
+  position: absolute;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  top: 40%;
+  border: 1rpx solid greenyellow;
+
+  font-size: 40rpx;
+
+  padding: 20rpx 30rpx;
+  background-color: rgb(255, 255, 255);
+
+  border-radius: 10rpx;
+}
+
+.user_content {
+  position: relative;
+}
+.user_main {
+  position: absolute;
+
+  width: 90%;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  top: -40rpx;
+}
+
+.history_wrap {
+  background-color: white;
+
+  display: flex;
+}
+.history_wrap navigator {
+  flex: 1;
+
+  text-align: center;
+
+  padding: 10rpx 0rpx;
+}
+.history_wrap navigator .his_num {
+  color: var(--theme-color);
+  font-weight: bold;
+}
+.history_wrap navigator .his_name {
+  color: #555;
+}
+
+.order_wrap, .address_wrap, .app_info_wrap, .recommend_wrap {
+  background-color: white;
+  margin-top: 20rpx;
+
+  color: #555;
+}
+.order_wrap .orders_title {
+  padding: 15rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.order_wrap .orders_content {
+  display: flex;
+}
+.order_wrap .orders_content navigator {
+  flex: 1;
+  text-align: center;
+
+  padding: 15rpx 0rpx;
+}
+.order_wrap .orders_content .order_icon {
+  color: var(--theme-color);
+}
+.address_wrap, .app_info_wrap .app_info_item, .recommend_wrap {
+  padding: 15rpx;
+}
+.app_info_wrap .app_info_item {
+  border-bottom: 1rpx solid #ccc;
+}
+.app_info_wrap .app_info_item:first-child {
+  display: flex;
+  justify-content: space-between;
+}

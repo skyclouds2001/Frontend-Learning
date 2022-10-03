@@ -1,0 +1,6 @@
+<!--components/upimg/upimg.wxml-->
+
+<view class="item">
+  <image class="img" mode="aspectFill" src="{{src}}"></image>
+  <icon class="ic" type="clear" size="23" color="red"></icon>
+</view>

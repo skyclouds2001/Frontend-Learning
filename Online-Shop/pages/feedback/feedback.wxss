@@ -1,0 +1,80 @@
+/* pages/feedback/feedback.wxss */
+
+page {
+  background-color: #eee;
+}
+
+.main {
+  padding: 20rpx;
+  color: #666;
+}
+
+/* .main .tilte {} */
+
+.main .tips {
+  display: flex;
+  flex-wrap: wrap;
+}
+.main .tips text {
+  width: 30%;
+  padding: 10rpx;
+  margin: 20rpx 10rpx;
+
+  background-color: white;
+
+  text-align: center;
+}
+
+.main .content {
+  background-color: white;
+  margin-top: 20rpx;
+}
+.main .content textarea {
+  padding: 10rpx;
+}
+.main .content .tool {
+  display: flex;
+  flex-wrap: wrap;
+
+  padding-bottom: 30rpx;
+}
+.main .content .tool button {
+  width: 90rpx;
+  height: 90rpx;
+  padding: 0rpx;
+  margin: 0rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 60rpx;
+  color: #ccc;
+}
+.main .content .tool .item {
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+}
+
+.main .submit {
+  margin: 20rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+.main .submit button {
+  width: 35%;
+  margin: 0rpx;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgb(250, 81, 81);
+
+  color: white;
+}
+.main .submit button icon {
+  margin-right: 10rpx;
+}

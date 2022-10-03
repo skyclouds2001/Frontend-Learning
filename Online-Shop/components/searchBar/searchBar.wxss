@@ -1,0 +1,20 @@
+/* components/searchBar/searchBar.wxss */
+
+.searchBar {
+  height: 90rpx;
+  padding: 10rpx;
+  background-color: rgb(235,68,80);
+}
+
+.searchNav {
+  background-color: white;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 15rpx;
+
+  color: #666;
+}

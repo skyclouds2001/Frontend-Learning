@@ -1,0 +1,112 @@
+/* pages/goods_detail/goods_detail.wxss */
+
+@import "../../styles/iconfont.wxss";
+
+page {
+  padding-bottom: 90rpx;
+}
+
+.detail_swiper swiper {
+  height: 70vw;
+  text-align: center;
+}
+.detail_swiper image {
+  width: 60%;
+}
+
+.goods_price {
+  color: var(--theme-color);
+  font-weight: bold;
+  padding: 15rpx;
+  font-size: 32rpx;
+}
+.goods_name_favorite {
+  display: flex;
+
+  border-top: 5rpx solid #dedede;
+  border-bottom: 5rpx solid #dedede;
+}
+.goods_name_favorite .name {
+  flex: 5;
+
+  font-size: 30rpx;
+  color: #000;
+  padding: 0 10rpx;
+
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.goods_name_favorite .favorite {
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  border-left: 2rpx solid #444;
+}
+.goods_info .goods_info_title {
+  font-size: 32rpx;
+  font-weight: bold;
+  padding: 20rpx;
+  color: var(--theme-color);
+}
+
+.bottom_tool {
+  display: flex;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 90rpx;
+  background-color: white;
+
+  border-top: 1rpx solid #ccc;
+}
+.bottom_tool .tool_item {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+.bottom_tool .tool_item button {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  opacity: 0;
+}
+.bottom_tool .cart {
+  flex: 2;
+
+  background-color: rgb(255, 165, 0);
+
+  color: white;
+  font-weight: bold;
+  font-size: 30rpx;
+}
+.bottom_tool .buy {
+  flex: 2;
+
+  background-color: rgb(235, 68, 80);
+
+  color: white;
+  font-weight: bold;
+  font-size: 30rpx;
+}
+
+.icon-shoucang1 {
+  color: orange;
+}

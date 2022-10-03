@@ -1,0 +1,36 @@
+<!--pages/category/category.wxml-->
+
+<view class="category">
+  <searchBar></searchBar>
+
+  <view class="container">
+
+    <!-- 左侧菜单 -->
+    <scroll-view class="menu" scroll-y enable-flex>
+      <view wx:for="{{left_data}}" wx:key="*this" class="{{index === active_index ? 'active' : ''}}" bindtap="handleItemTap" data-index="{{index}}">{{item}}</view>
+    </scroll-view>
+
+    <!-- 右侧内容 -->
+    <scroll-view class="content" scroll-y enable-flex scroll-top="{{scroll_top}}">
+      <view class="outer" wx:for="{{right_data}}" wx:key="cat_id" wx:for-item="item_outer" wx:for-index="index_outer">
+
+        <!-- 模块标题 -->
+        <view class="title">
+          <text class="t_delimiter">/</text>
+          <text class="t_title">{{item_outer.cat_name}}</text>
+          <text class="t_delimiter">/</text>
+        </view>
+
+        <!-- 模块列表部分 -->
+        <view class="list">
+          <navigator wx:for="{{item_outer.children}}" wx:key="cat_id" wx:for-item="item_inner" wx:for-index="index_inner" url="/pages/goods_list/goods_list?cid={{item_inner.cat_id}}">
+            <image src="{{item_inner.cat_icon}}" mode="widthFix"></image>
+            <view>{{item_inner.cat_name}}</view>
+          </navigator>
+        </view>
+        
+      </view>
+    </scroll-view>
+
+  </view>
+</view>

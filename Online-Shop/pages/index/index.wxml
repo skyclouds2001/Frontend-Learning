@@ -1,0 +1,36 @@
+<!--index.wxml-->
+
+<view class="index">
+  <searchBar></searchBar>
+
+  <view class="swiper">
+    <swiper indicator-dots="true" autoplay="true" circular="true"
+            indicator-color="rgba(0, 0, 0, 0.3)" indicator-active-color="#fff">
+      <swiper-item wx:for="{{swiper_list}}" wx:key="goods_id">
+        <navigator url="{{item.navigator_url}}">
+          <image src="{{item.image_src}}" mode="widthFix"></image>
+        </navigator>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <view class="cates">
+    <navigator wx:for="{{cates_list}}" wx:key="name" url="/pages/category/category" open-type="switchTab">
+      <image mode="widthFix" src="{{item.image_src}}"></image>
+    </navigator>
+  </view>
+
+  <view class="floor">
+    <view class="floor_group" wx:for="{{floor_list}}" wx:for-item="item_outer" wx:for-index="index_outer" wx:key="floor_title">
+      <view class="floor_title">
+        <image mode="widthFix" src="{{item_outer.floor_title.image_src}}"></image>
+      </view>
+      <view class="floor_list">
+        <navigator wx:for="{{item_outer.product_list}}" wx:for-item="item_inner" wx:for-index="index_inner" wx:key="name" url="{{item_inner.navigator_url}}">
+          <image mode="{{index_inner === 0 ? 'widthFix' : 'scaleToFill'}}" src="{{item_inner.image_src}}"></image>
+        </navigator>
+      </view>
+    </view>
+  </view>
+
+</view>

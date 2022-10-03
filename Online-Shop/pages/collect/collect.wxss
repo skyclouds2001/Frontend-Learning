@@ -1,0 +1,61 @@
+/* pages/collect/collect.wxss */
+
+.main {
+  background-color: #eee;
+}
+
+.button_wrap {
+  padding: 20rpx 0rpx;
+  border-top: 1rpx solid #ccc;
+}
+.clip {
+  padding: 15rpx;
+  border: 1rpx solid #ccc;
+  margin-left: 25rpx;
+
+  background-color: white;
+}
+.active {
+  color: var(--theme-color);
+  border-color: currentColor;
+}
+
+.collect_list {
+  padding: 0rpx 10rpx;
+}
+
+.collect_item {
+  display: flex;
+  
+  border-bottom: 5rpx solid #ccc;
+  margin-bottom: 5rpx;
+
+  background-color: white;
+}
+
+.img {
+  flex: 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img image {
+  width: 70%;
+}
+
+.info {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.name {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.price {
+  color: var(--theme-color);
+}
