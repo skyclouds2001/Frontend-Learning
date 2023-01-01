@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Outlet } from 'react-router-dom'
 import { Breadcrumb, Layout, Menu, theme } from 'antd'
 import {
   DesktopOutlined,
@@ -74,7 +74,7 @@ const Home: React.FC = () => {
         </Header>
         <Content style={{ margin: '16px' }}>
           <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
-            Bill is a cat.
+            <Outlet />
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
