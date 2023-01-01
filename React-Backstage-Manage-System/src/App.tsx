@@ -1,15 +1,12 @@
-import { Button } from 'antd'
-import { RetweetOutlined } from '@ant-design/icons'
-import C1 from '@/components/C1'
-import C2 from '@/components/C2'
+import React from 'react'
+import { useRoutes } from 'react-router-dom'
+import routes from '@/router'
 
-function App() {
+const App: React.FC = () => {
+  const outlet = useRoutes(routes)
   return (
     <div className="App">
-      <C1 />
-      <C2 />
-      <Button type="primary">button</Button>
-      <RetweetOutlined />
+      {outlet}
     </div>
   )
 }
