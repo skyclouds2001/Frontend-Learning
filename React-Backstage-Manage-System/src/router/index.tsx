@@ -35,7 +35,7 @@ const routes: RouteObject[] = [
   },
   {
     path: '*',
-    element: <Navigate to="/about" />,
+    element: <Navigate to="/" />,
   },
 ]
 
