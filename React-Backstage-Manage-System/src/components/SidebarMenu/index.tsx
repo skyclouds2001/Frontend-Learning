@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { Menu } from 'antd'
 import { DesktopOutlined, FileOutlined, PieChartOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons'
 import type { MenuProps } from 'antd'
@@ -60,13 +60,14 @@ const items: MenuItem[] = [
 
 const SidebarMenu: React.FC = () => {
   const navigate = useNavigate()
+  const location = useLocation()
 
   const[openKeys, setOpenKeys] = useState<string[]>([])
 
   return (
     <Menu
       theme="dark"
-      defaultSelectedKeys={ ['1'] }
+      defaultSelectedKeys={ [location.pathname] }
       mode="inline"
       openKeys={ openKeys }
       items={ items }

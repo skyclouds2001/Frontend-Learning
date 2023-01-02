@@ -18,7 +18,7 @@ const routes: RouteObject[] = [
       {
         path: '/about',
         element: (
-          <React.Suspense fallback={<div>loading...</div>}>
+          <React.Suspense fallback={ <div>loading...</div> }>
             <About />
           </React.Suspense>
         ),
@@ -26,12 +26,16 @@ const routes: RouteObject[] = [
       {
         path: '/user',
         element: (
-          <React.Suspense fallback={<div>loading...</div>}>
+          <React.Suspense fallback={ <div>loading...</div> }>
             <User />
           </React.Suspense>
         ),
       },
     ],
+  },
+  {
+    path: '*',
+    element: <Navigate to="/about" />,
   },
 ]
 

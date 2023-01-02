@@ -7,9 +7,7 @@ const { Header, Content, Footer, Sider } = Layout
 
 const Home: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false)
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken()
+  const { token: { colorBgContainer } } = theme.useToken()
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
