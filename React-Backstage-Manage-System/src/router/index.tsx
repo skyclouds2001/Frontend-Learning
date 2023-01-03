@@ -5,6 +5,7 @@ import type { RouteObject } from 'react-router-dom'
 const Home = lazy(() => import('@/views/Home'))
 const About = lazy(() => import('@/views/About'))
 const User = lazy(() => import('@/views/User'))
+const Login = lazy(() => import('@/views/Login'))
 
 const routes: RouteObject[] = [
   {
@@ -13,7 +14,11 @@ const routes: RouteObject[] = [
   },
   {
     path: '/',
-    element: <Home />,
+    element: (
+      <React.Suspense fallback={ <div>loading...</div> }>
+        <Home />
+      </React.Suspense>
+    ),
     children: [
       {
         path: '/about',
@@ -32,6 +37,14 @@ const routes: RouteObject[] = [
         ),
       },
     ],
+  },
+  {
+    path: '/login',
+    element: (
+      <React.Suspense fallback={ <div>loading...</div> }>
+        <Login />
+      </React.Suspense>
+    )
   },
   {
     path: '*',

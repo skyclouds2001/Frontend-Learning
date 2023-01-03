@@ -1,0 +1,63 @@
+.page {
+  width: 100vw;
+  height: 100vh;
+
+  background-color: #313947;
+}
+
+.box {
+  width: 400px;
+  height: auto;
+
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  text-align: center;
+  line-height: 2em;
+
+  h1 {
+    color: rgb(229, 225, 225);
+    font-size: 20px;
+  }
+  p {
+    color: rgb(198, 198, 198);
+    font-size: 15px;
+  }
+}
+
+.form {
+  margin: 0;
+  padding: 50px 0;
+
+  input, span {
+    background-color: transparent;
+    border-color: #1890ff;
+    color: rgb(200, 200, 200);
+
+    &::placeholder {
+      color: rgba(24, 144, 255, 0.5);
+    }
+  }
+  svg {
+    color: rgba(24, 144, 255, 0.3);
+  }
+
+  .captcha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div {
+      padding-left: 20px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+}
