@@ -1,6 +1,7 @@
 # Canvas
 
 阅读 [Canvas 从入门到劝朋友放弃（图解版）](https://juejin.cn/post/7116784455561248775) 笔记
+阅读 [Canvas 从进阶到退学](https://juejin.cn/post/7176055713733541943) 笔记
 
 ## 简介
 
@@ -264,3 +265,116 @@ DOM 版
 
 * 从 DOM 里获取图片
 * 使用 drawImage 渲染图片
+
+## 变形
+
+#### 平移
+
+`translate(x,y)`
+
+* 第一个参数代表x轴方向位移距离
+* 第二个参数代表y轴方向位移距离
+
+#### 缩放
+
+`scale(x, y)`
+
+* 第一个参数是x轴方向的缩放
+* 第二个参数是y轴方向的缩放
+
+#### 旋转
+
+`rotate(deg)`
+
+* 参数deg代表旋转的角度
+* 默认的旋转原点是画布的左上角，也就是 (0, 0) 坐标
+* 若需要修改旋转中心，可以使用 translate() 方法平移画布，通过计算移动到指定位置
+
+#### 变换矩阵
+
+`transform(a, b, c, d, e, f)`
+
+* a  水平缩放（x轴方向） 默认值是 1
+* b  水平倾斜（x轴方向） 默认值是 0
+* c  垂直倾斜（y轴方向） 默认值是 0
+* d  垂直缩放（y轴方向） 默认值是 1
+* e  水平移动（x轴方向） 默认值是 0
+* f  垂直移动（y轴方向） 默认值是 0
+
+`setTransform(a, b, c, d, e, f)`
+
+区别
+
+* transform() 每次执行都会参考上一次变换后的结果
+* setTransform() 每次调用都会基于最原始状态进行变换
+
+## 控制像素
+
+#### 获取像素数据
+
+`getImageData(x, y, width, height)`
+
+* x 和 y 代表选区的左上角坐标
+* width 表示选区宽度
+* height 表示选区高度
+
+* data 图片像素数据集，以一维数组的形式存放，依次记录了各像素点的r、g、b、a值（取值范围在0~255之间）[若有x个像素，则data数组的长度即为4x]
+* colorSpace 图片使用的色彩标准，这个属性在 Chrome 里有打印出来，Firefox 里没打印。不重要~
+* height 图片高度
+* width 图片宽度
+
+#### 放置像素数据
+
+`putImageData(imgData, x, y, dirtyX, dirtyY, dirtyWidth, dirtyHeight)`
+
+* imageData  规定要放回画布的 ImageData 对象
+* x  ImageData 对象左上角的 x 坐标，以像素计
+* y  ImageData 对象左上角的 y 坐标，以像素计
+* dirtyX  可选 | 水平值（x），以像素计，在画布上放置图像的位置
+* dirtyY  可选 | 水平值（y），以像素计，在画布上放置图像的位置
+* dirtyWidth  可选 | 在画布上绘制图像所使用的宽度
+* dirtyHeight  可选 | 在画布上绘制图像所使用的高度
+
+#### 透明效果
+
+通过 getImageData() 获取的是一个数组类型的数据，每4个元素代表1个像素，就是 rgba，而 a 表示透明通道，所以只需修改每组像素的最后1个元素的值，就能修改图片的不透明度
+
+## 渐变
+
+#### 线性渐变 `createLinearGradient`
+
+创建线性渐变对象  createLinearGradient(x1, y1, x2, y2)
+
+第一个参数 stop 表示渐变色位置的偏移量，取值范围是 0 ~ 1。
+
+第二个参数 color 表示颜色
+
+在 canvas 中使用线性渐变步骤如下
+
+创建线性渐变对象  createLinearGradient(x1, y1, x2, y2)
+
+添加渐变颜色  addColorStop(stop, color)
+
+设置为填充色或描边颜色  fillStyle 或 strokeStyle
+
+#### 径向渐变 `createRadialGradient`
+
+createRadialGradient(x1, y1, r1, x2, y2, r2)
+
+x1, y1: 渐变开始的圆心坐标
+r1: 渐变开始的圆心半径
+x2, y2: 渐变结束的圆心坐标
+r2: 渐变结束的圆心半径
+
+同样使用 addColorStop 设置渐变颜色，同样支持多色渐变
+
+渐变的定位坐标是参照画布的，超出定位的部分会使用最临近的那个颜色
+
+建议创建每个图形之前都单独创建一个渐变色
+
+## 阴影
+
+* shadowOffsetX   设置或返回阴影与形状的水平距离；默认值是0，大于0时向正方向偏移
+* shadowOffsetY   设置或返回阴影与形状的垂直距离；默认值是0，大于0时向正方向偏移
+* shadowColor   设置或返回用于阴影的颜色；默认黑色
+* shadowBlur   设置或返回用于阴影的模糊级别；默认值是0，数值越大模糊度越强
