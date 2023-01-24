@@ -29,9 +29,21 @@ fn main() {
     let ar: &[i8] = &arr[2..4];
     println!("slice: {:?}", ar);
     // function
-    println!("function: {}", is_equal(2, 3))
+    println!("function: {}", is_equal(2, 3));
+    let c: Circle = Circle { radius: 5 };
+    println!("struct: {}", c.area());
 }
 
 fn is_equal(x: i8, y: i8) -> bool {
     return x == y;
+}
+
+struct Circle {
+    radius: u64,
+}
+
+impl Circle {
+    fn area (&self) -> u64 {
+        return self.radius * self.radius * 3.1415926 as u64;
+    }
 }
