@@ -1,7 +1,5 @@
 # SVG
 
-阅读 [SVG 从入门到后悔，怎么不早点学起来（图解版）](https://juejin.cn/post/7118985770408345630) 笔记
-
 ## 概念
 
 * 位图：放大会失真图像边缘有锯齿；是由像素点组成；前端的Canvas就是位图效果
@@ -217,8 +215,9 @@ SVG是矢量图的其中一种格式。它是用 XML 来描述图形的
   <image xlink:href="https://img.zcool.cn/community/0167b95fc9ea7a11013ee04dc55982.jpg" width="50" height="50" x="100" y="100"></image>
   ```
 
-## 其他资料
+## 参考资料
 
+* [SVG 从入门到后悔，怎么不早点学起来（图解版）](https://juejin.cn/post/7118985770408345630)
 * [MDN SVG 参考](https://developer.mozilla.org/zh-CN/docs/Web/SVG)
 * [SVG 在前端的7种使用方法](https://juejin.cn/post/7117876752633823269)
 * [vertical-align 底线、基线、中线的含义](https://juejin.cn/post/7114690589480157214)
