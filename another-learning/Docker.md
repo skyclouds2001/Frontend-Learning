@@ -191,8 +191,204 @@ Docker客户端通过REST API和服务端进行交互，docker客户端每发送
 
 ## 数据管理-挂载目录
 
-使用 --mount source=XXX,target=XXX实现挂载
+使用 `--mount source=XXX,target=XXX` 命令实现挂载
+
+## 网络
+
+### 端口映射
+
+* 可以通过-P或者-p参数来指定需要对外暴露的端口
+
+`docker run -d -P <container-name>`
+
+`docker run -d -p [ip:][hostPort:]containerPort nginx`
+
+省略hostPort参数本地主机会自动分配一个端口
+
+亦可以使用udp来指定映射到udp端口
+
+映射容器的多个端口，可以使用多个-p参数；或直接使用范围变量
+
+* 查看容器端口映射情况
+
+`docker ps -l`
+
+ (快捷指令) `docker port <container-id>`
+
+* 查看相关日志
+
+`docker logs <container-id>`
+
+### 网络模式
+
+使用 `docker network ls` 查看 docker 的网络模式
+
+启动 docker 容器时使用 `--network=<name>` 指定使用的网络模式
+
+* none  无网络功能，除了lo本地环回网卡，没有其他的网卡信息，不能接收信息，也不能对外发送信息
+* host  禁用了Docker的网络隔离，直接共享宿主机的网络
+* bridge  默认|挂载到宿主机的虚拟网桥docker0上
+
+### 容器互联
+
+自定义网桥 `docker network create -d bridge my-net`
+
+移除网桥 `docker network rm my-net`
+
+## Dockerfile
+
+### `FROM`
+
+指定一个基础镜像
+
+`FROM <image> [AS <name>]`
+
+`FROM <image>:<tag> [AS <name>]`
+
+Dockerfile一般以FROM指令开始（允许在FROM之前由ARG指令定义一个变量）
+
+Docker从17.05开始，支持多阶段构建，就是我们在Dockerfile中可以使用多个FROM指令，每个FROM指令都可以使用不同的基础镜像，每个FROM指令都可以使用不同的基础镜像，并且每条指令都会开始新阶段的构建；同时可以将资源从一个阶段复制到另一个阶段，在最终镜像中只保留所需要的内容
+
+### `RUN`
+
+在镜像容器中执行命令
+
+`RUN <command>`
+
+`RUN ["可执行文件", "参数1", "参数2"]`
+
+RUN指令常见的用法就是安装包用apt-get，通常建议把update和install写在一条指令内，确保我们的Dockerfiles每次安装的都是包的最新的版本；同时也可以减少镜像层数，减少包的体积
+
+### `WORKDIR`
+
+用来指定工作目录
+
+会将各层的当前目录修改为指定的工作目录；如果该目录不存在，WORKDIR会自动创建目录
+
+### `COPY`
+
+用于从构建上下文目录中复制文件到镜像内的目标路径中
+
+`COPY [--chown=<user>:<group>] <源路径>... <目标路径>`
+
+`COPY [--chown=<user>:<group>] ["<源路径1>",... "<目标路径>"]`
+
+复制的文件可以是一个文件、多个文件或者通配符匹配的文件
+
+特别注意，COPY指令只能复制文件夹下的文件，而不能复制文件夹本身
+
+### `CMD`
+
+用于执行目标镜像中包含的软件
+
+`CMD <命令>`
+
+`CMD ["可执行文件", "参数1", "参数2"...]`
+
+RUN是用来执行docker build构建镜像过程中要执行的命令；而CMD指令在docker run时运行而非docker build，也就是启动容器的时候，它的首要目的在于为启动的容器指定默认要运行的程序，程序运行结束，容器也就结束
+
+容器在run的时候只能创建一次，因此一个Docker容器中也只能有一个CMD指令
+
+### `ENTRYPOINT`
+
+指定容器启动程序和参数
+
+一个Dockerfile同样也只能有一个ENTRYPOINT指令
+
+当指定了ENTRYPOINT后，CMD指令的含义发生了改变，不再是直接的运行其命令，而是将 CMD 的内容作为参数传给ENTRYPOINT指令
+
+`<ENTRYPOINT> "<CMD>"`
+
+### `VOLUME`
+
+用于暴露任何数据库存储文件，配置文件，或容器创建的文件和目录
+
+`VOLUME <路径>`
+`VOLUME ["<路径1>", "<路径2>"...]`
+
+可以事先指定某些目录挂载为匿名卷，这样在运行时如果用户不指定挂载，其应用也可以正常运行，不会向容器存储层写入大量数据
+
+### `EXPOSE`
+
+声明容器运行时提供服务的端口
+
+`EXPOSE <端口1> [<端口2>...]`
+
+好处在于，一个是帮助镜像使用者理解这个镜像服务的守护端口，以方便配置映射；另一个好处则是在运行时使用随机端口映射时，也就是 `docker run -P` 时，会自动随机映射 EXPOSE 的端口
+
+### `ENV`
+
+用于设置环境变量
+
+`ENV <key> <value>`
+
+`ENV <key1>=<value1> <key2>=<value2>...`
+
+### `ARG`
+
+设置构建环境的环境变量，容器运行阶段不存在
+
+## 项目实例
+
+### Vue 项目
+
+```text
+FROM nginx:latest
+
+COPY default.conf /etc/nginx/conf.d/
+
+COPY dist/ /usr/share/nginx/html/
+
+EXPOSE 80
+```
+
+### express 项目
+
+Dockerfile
+
+```text
+FROM node:10.15.3-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install --registry=https://registry.npm.taobao.org
+
+COPY . .
+
+EXPOSE 8080
+
+CMD npm run start
+```
+
+之所以先拷贝package*.json文件，安装依赖后再拷贝整个项目，是因为能够提高缓存的命中率
+
+### Vue 项目多阶段构建
+
+```text
+FROM node:12 as compile
+
+WORKDIR /app
+
+COPY package.json ./
+
+RUN npm install --registry=https://registry.npm.taobao.org
+
+COPY . .
+
+RUN npm run build
+
+FROM nginx:latest as serve
+
+COPY default.conf /etc/nginx/conf.d/
+
+COPY --from=compile /app/dist /usr/share/nginx/html/
+
+EXPOSE 80
+```
 
 ## 参考资料
 
-[前端抢饭碗系列之初识Docker容器化部署](https://xieyufei.com/2022/02/22/FrontEnd-Docker.html)
+* [前端抢饭碗系列之初识Docker容器化部署](https://xieyufei.com/2022/02/22/FrontEnd-Docker.html)
+* [前端抢饭碗系列之Docker进阶部署](https://xieyufei.com/2022/03/22/FrontEnd-Docker-Advance.html)
