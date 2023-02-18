@@ -1,14 +1,41 @@
-/***** Chart 1 *****/
+const year = [
+  1900, 1905, 1910, 1915, 1920,
+  1925, 1930, 1935, 1940, 1945,
+  1950, 1955, 1960, 1965, 1970,
+  1975, 1980, 1985, 1990, 1995,
+  2000, 2005, 2010, 2015, 2020,
+]
 
-const year = [1860, 1865, 1870, 1875, 1880, 1885, 1890, 1895, 1900, 1905, 1910, 1915, 1920, 1925, 1930, 1935, 1940, 1945, 1950, 1955, 1960, 1965, 1970, 1975, 1980, 1985, 1990]
+/**
+ * 二氧化碳排放数据
+ *
+ * @see https://ourworldindata.org/co2-and-greenhouse-gas-emissions
+ * @see https://github.com/owid/co2-data/blob/master/owid-co2-codebook.csv
+ */
+const co2 = [
+  1.95, 2.43, 3.03, 3.13, 3.52,
+  3.73, 3.93, 3.81, 4.85, 4.25,
+  6.00, 7.44, 9.39, 11.32, 14.90,
+  17.05, 19.50, 20.33, 22.76, 23.46,
+  25.45, 29.61, 33.36, 35.56, 35.26,
+]
 
-const co2 = [14.70965494, 14.74187227, 14.78223944, 14.72507738, 14.74905997, 14.70818344, 14.73632585, 14.74006119, 14.78028687, 14.6703631, 14.63755151, 14.7022267, 14.72622345, 14.79085619, 14.87582109, 14.94452875, 15.01326471, 15.01695761, 14.96800198, 14.98390548, 15.04047328, 14.97518969, 14.99516811, 14.99076776, 15.09203233, 15.16075414, 15.24567659]
-
-const temperature = [0.684048805, 0.848125056, 0.927925778, 1.005936577, 1.085438979, 1.249515229, 1.242952179, 1.663136541, 2.169684675, 2.675636168, 3.096715492, 3.261090063, 3.168759882, 3.845947317, 3.668446645, 4.174398138, 4.680647952, 4.845619164, 6.378389666, 7.910265207, 9.955251932, 12.93920229, 16.18045404, 18.39667671, 18.47468751, 20.09382178, 21.19805495]
+/**
+ * 全球年气温距平
+ *
+ * @see https://www.data.jma.go.jp/cpdinfo/temp/an_wld.html
+ */
+const temperature = [
+  -0.62, -0.89, -0.96, -0.67, -0.69,
+  -0.63, -0.56, -0.59, -0.55, -0.49,
+  -0.63, -0.67, -0.57, -0.63, -0.53,
+  -0.63, -0.38, -0.51, -0.19, -0.15,
+  -0.19, 0.06, 0.11, 0.3, 0.34,
+]
 
 echarts.init(document.getElementById('graph1')).setOption({
   title: {
-    text: 'The CO2 Emissions and the Average Temperature of the Earth\'s Atmosphere Yearly Change Chart',
+    text: 'The CO2 Emissions and the Average Temperature of the Earth\'s Atmosphere Annual Change Chart',
     left: 'center',
     top: 'top',
   },
@@ -75,21 +102,15 @@ echarts.init(document.getElementById('graph1')).setOption({
   series: [
     {
       name: 'CO2 Emissions',
-      type: 'line',
+      type: 'scatter',
       yAxisIndex: 0,
-      smooth: true,
       data: [...co2],
     },
     {
       name: 'Average Temperature',
-      type: 'line',
+      type: 'scatter',
       yAxisIndex: 1,
-      smooth: true,
       data: [...temperature],
     },
   ],
 })
-
-/***** Chart 2 *****/
-
-echarts.init(document.getElementById('graph2')).setOption({})
