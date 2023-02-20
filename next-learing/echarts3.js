@@ -105,6 +105,10 @@ const DATA = [
     value: 14786861638.4535,
   },
   {
+    name: 'Albania',
+    value: 18255787479.1846,
+  },
+  {
     name: 'Algeria',
     value: 163044443983.759,
   },
@@ -133,12 +137,20 @@ const DATA = [
     value: 54622176470.5882,
   },
   {
+    name: 'Bahamas',
+    value: 11208600000,
+  },
+  {
     name: 'Bahrain',
     value: 38868663031.9149,
   },
   {
     name: 'Bangladesh',
     value: 416264942893.326,
+  },
+  {
+    name: 'Barbados',
+    value: 4843800000,
   },
   {
     name: 'Belarus',
@@ -149,8 +161,16 @@ const DATA = [
     value: 594104177539.525,
   },
   {
+    name: 'Belize',
+    value: 2491500000,
+  },
+  {
     name: 'Benin',
     value: 17144918952.4682,
+  },
+  {
+    name: 'Bermuda',
+    value: 7286607000,
   },
   {
     name: 'Bhutan',
@@ -161,12 +181,20 @@ const DATA = [
     value: 40408208528.1599,
   },
   {
+    name: 'Bosnia and Herz.',
+    value: 5861268038.7982,
+  },
+  {
     name: 'Botswana',
     value: 17614791265.6824,
   },
   {
     name: 'Brazil',
     value: 1608981456325.08,
+  },
+  {
+    name: 'Bulgaria',
+    value: 84056312734.3089,
   },
   {
     name: 'Burkina Faso',
@@ -191,6 +219,10 @@ const DATA = [
   {
     name: 'Cape Verde',
     value: 1936174043.45293,
+  },
+  {
+    name: 'Cayman Is.',
+    value: 5898449687.97711,
   },
   {
     name: 'Central African Rep.',
@@ -229,6 +261,14 @@ const DATA = [
     value: 70043191477.0454,
   },
   {
+    name: 'Croatia',
+    value: 68955083280.1922,
+  },
+  {
+    name: 'Curaçao',
+    value: 2699612458.10056,
+  },
+  {
     name: 'Cyprus',
     value: 28407867534.0035,
   },
@@ -249,6 +289,10 @@ const DATA = [
     value: 3482987379.0942,
   },
   {
+    name: 'Dominica',
+    value: 554181481.481481,
+  },
+  {
     name: 'Dominican Rep.',
     value: 94243453937.4462,
   },
@@ -261,12 +305,20 @@ const DATA = [
     value: 404142766093.053,
   },
   {
-    name: 'Ethiopia',
-    value: 111271112329.975,
+    name: 'El Salvador',
+    value: 28736940000,
   },
   {
     name: 'Eq. Guinea',
     value: 12269392839.7472,
+  },
+  {
+    name: 'Estonia',
+    value: 37191166151.98,
+  },
+  {
+    name: 'Ethiopia',
+    value: 111271112329.975,
   },
   {
     name: 'Fiji',
@@ -305,6 +357,14 @@ const DATA = [
     value: 214873879833.648,
   },
   {
+    name: 'Guam',
+    value: 6123000000,
+  },
+  {
+    name: 'Guatemala',
+    value: 85985752107.4679,
+  },
+  {
     name: 'Guinea',
     value: 16091817842.2342,
   },
@@ -323,6 +383,10 @@ const DATA = [
   {
     name: 'Honduras',
     value: 28488668301.6401,
+  },
+  {
+    name: 'Hungary',
+    value: 181848022233.89,
   },
   {
     name: 'Iceland',
@@ -377,6 +441,10 @@ const DATA = [
     value: 110347079517.356,
   },
   {
+    name: 'Kiribati',
+    value: 207031250,
+  },
+  {
     name: 'Korea',
     value: 1810955871380.98,
   },
@@ -389,8 +457,16 @@ const DATA = [
     value: 18827148509.5798,
   },
   {
+    name: 'Latvia',
+    value: 39853501579.8211,
+  },
+  {
     name: 'Lebanon',
     value: 23131940280.7316,
+  },
+  {
+    name: 'Lesotho',
+    value: 2496134680.31694,
   },
   {
     name: 'Liberia',
@@ -399,6 +475,18 @@ const DATA = [
   {
     name: 'Libya',
     value: 42817472975.3677,
+  },
+  {
+    name: 'Lithuania',
+    value: 66445256585.3671,
+  },
+  {
+    name: 'Luxembourg',
+    value: 85506243833.7816,
+  },
+  {
+    name: 'Macedonia',
+    value: 13825049831.7959,
   },
   {
     name: 'Madagascar',
@@ -443,6 +531,10 @@ const DATA = [
   {
     name: 'Mongolia',
     value: 15286441818.1437,
+  },
+  {
+    name: 'Montenegro',
+    value: 5861268038.7982,
   },
   {
     name: 'Morocco',
@@ -529,6 +621,10 @@ const DATA = [
     value: 253663144586.019,
   },
   {
+    name: 'Puerto Rico',
+    value: 106525700000,
+  },
+  {
     name: 'Qatar',
     value: 179677211793.938,
   },
@@ -545,12 +641,24 @@ const DATA = [
     value: 11070356519.4804,
   },
   {
+    name: 'Samoa',
+    value: 843842416.462442,
+  },
+  {
+    name: 'São Tomé and Principe',
+    value: 526653790.670814,
+  },
+  {
     name: 'Saudi Arabia',
     value: 833541236569.315,
   },
   {
     name: 'Senegal',
     value: 27625388352.1688,
+  },
+  {
+    name: 'Serbia',
+    value: 63082047649.8528,
   },
   {
     name: 'Seychelles',
@@ -563,6 +671,14 @@ const DATA = [
   {
     name: 'Singapore',
     value: 396986899888.351,
+  },
+  {
+    name: 'Slovakia',
+    value: 116527101097.7,
+  },
+  {
+    name: 'Slovenia',
+    value: 61748586534.8672,
   },
   {
     name: 'Solomon Is.',
@@ -583,6 +699,10 @@ const DATA = [
   {
     name: 'Sri Lanka',
     value: 88927263724.8592,
+  },
+  {
+    name: 'St. Vin. and Gren.',
+    value: 904181492.766708,
   },
   {
     name: 'Sudan',
@@ -617,8 +737,20 @@ const DATA = [
     value: 505947037098.424,
   },
   {
+    name: 'Timor-Leste',
+    value: 3621222382.15929,
+  },
+  {
     name: 'Togo',
     value: 8413200567.6151,
+  },
+  {
+    name: 'Tonga',
+    value: 469231309.539488,
+  },
+  {
+    name: 'Trinidad and Tobago',
+    value: 24460196270.6866,
   },
   {
     name: 'Tunisia',
@@ -655,6 +787,10 @@ const DATA = [
   {
     name: 'Uzbekistan',
     value: 69238903106.1738,
+  },
+  {
+    name: 'Vanuatu',
+    value: 956332655.718234,
   },
   {
     name: 'Vietnam',
