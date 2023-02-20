@@ -1,20 +1,20 @@
-const el = document.getElementById('graph3')
+const e = document.getElementById('graph4')
 
-const chart = echarts.init(el)
+const charts = echarts.init(e)
 
-chart.showLoading()
+charts.showLoading()
 
 $.when($.get('/next-learing/world.json')).done((res) => {
   const worldJson = res
 
   echarts.registerMap('world', worldJson)
 
-  chart.hideLoading()
+  charts.hideLoading()
 
-  chart.setOption({
+  charts.setOption({
     title: {
       show: true,
-      text: 'World GDP of 2021',
+      text: 'World CO2 Emission of 2019',
       left: 'center',
       top: 'top',
     },
@@ -44,8 +44,8 @@ $.when($.get('/next-learing/world.json')).done((res) => {
       type: 'continuous',
       left: 'right',
       top: 'bottom',
-      min: Math.floor(Math.log(MIN)),
-      max: Math.ceil(Math.log(MAX)),
+      min: Math.floor(Math.log(MINs)),
+      max: Math.ceil(Math.log(MAXs)),
       inRange: {
         color: [
           '#313695',
@@ -71,14 +71,14 @@ $.when($.get('/next-learing/world.json')).done((res) => {
     series: [
       {
         type: 'map',
-        name: 'GDP',
+        name: 'CO2 Emissions',
         map: 'world',
         emphasis: {
           label: {
             show: true,
           },
         },
-        data: DATA.map((v) => ({
+        data: DATAs.map((v) => ({
           name: v.name,
           value: Math.log(v.value),
         })),
@@ -88,724 +88,704 @@ $.when($.get('/next-learing/world.json')).done((res) => {
 })
 
 /**
- * 各国 2021 年 GDP 数据
+ * 各国 2021 年 CO2 Emissions 数据
  * @type {Array<{ name: string, value: number}>}
  */
-const DATA = [
+const DATAs = [
   {
     name: 'Afghanistan',
-    value: 14786861638.4535,
+    value: 6079.99992370605,
   },
   {
     name: 'Albania',
-    value: 18255787479.1846,
+    value: 4829.99992370605,
   },
   {
     name: 'Algeria',
-    value: 163044443983.759,
+    value: 171250,
   },
   {
     name: 'Angola',
-    value: 67404287260.3199,
+    value: 25209.9990844727,
   },
   {
     name: 'Argentina',
-    value: 487227339102.67,
+    value: 168100.006103516,
   },
   {
     name: 'Armenia',
-    value: 13861409968.835,
+    value: 6170.00007629395,
   },
   {
     name: 'Australia',
-    value: 1552667363236.06,
+    value: 386529.998779297,
   },
   {
     name: 'Austria',
-    value: 480368403893.364,
+    value: 64769.9966430664,
   },
   {
     name: 'Azerbaijan',
-    value: 54622176470.5882,
+    value: 35509.9983215332,
   },
   {
     name: 'Bahamas',
-    value: 11208600000,
+    value: 2839.99991416931,
   },
   {
     name: 'Bahrain',
-    value: 38868663031.9149,
+    value: 33259.9983215332,
   },
   {
     name: 'Bangladesh',
-    value: 416264942893.326,
+    value: 90739.9978637695,
   },
   {
     name: 'Barbados',
-    value: 4843800000,
+    value: 1250,
   },
   {
     name: 'Belarus',
-    value: 68205380706.6609,
+    value: 57669.9981689453,
   },
   {
     name: 'Belgium',
-    value: 594104177539.525,
+    value: 93010.0021362305,
   },
   {
     name: 'Belize',
-    value: 2491500000,
+    value: 639.999985694885,
   },
   {
     name: 'Benin',
-    value: 17144918952.4682,
-  },
-  {
-    name: 'Bermuda',
-    value: 7286607000,
+    value: 7300.00019073486,
   },
   {
     name: 'Bhutan',
-    value: 2539552984.67797,
+    value: 1049.99995231628,
   },
   {
     name: 'Bolivia',
-    value: 40408208528.1599,
+    value: 22340.0001525879,
   },
   {
     name: 'Bosnia and Herz.',
-    value: 5861268038.7982,
+    value: 21069.9996948242,
   },
   {
     name: 'Botswana',
-    value: 17614791265.6824,
+    value: 7250,
   },
   {
     name: 'Brazil',
-    value: 1608981456325.08,
+    value: 434299.987792969,
   },
   {
     name: 'Bulgaria',
-    value: 84056312734.3089,
+    value: 39139.9993896484,
   },
   {
     name: 'Burkina Faso',
-    value: 19737615114.3661,
+    value: 5000,
   },
   {
     name: 'Burundi',
-    value: 2779813489.02447,
+    value: 720.000028610229,
   },
   {
     name: 'Cambodia',
-    value: 26961061119.7957,
+    value: 16180.0003051758,
   },
   {
     name: 'Cameroon',
-    value: 45338283344.8175,
+    value: 9430.00030517578,
   },
   {
     name: 'Canada',
-    value: 1988336331717.42,
+    value: 580210.021972656,
   },
   {
     name: 'Cape Verde',
-    value: 1936174043.45293,
-  },
-  {
-    name: 'Cayman Is.',
-    value: 5898449687.97711,
+    value: 649.999976158142,
   },
   {
     name: 'Central African Rep.',
-    value: 2516498299.01212,
+    value: 239.999994635582,
   },
   {
     name: 'Chad',
-    value: 11779980801.7843,
+    value: 2250,
   },
   {
     name: 'Chile',
-    value: 317058508651.76,
+    value: 91370.002746582,
   },
   {
     name: 'China',
-    value: 17734062645371.4,
+    value: 10707219.7265625,
   },
   {
     name: 'Colombia',
-    value: 314464137241.33,
+    value: 81040.0009155273,
   },
   {
     name: 'Comoros',
-    value: 1296089632.60039,
+    value: 319.999992847443,
   },
   {
     name: 'Congo',
-    value: 55350968593.0597,
+    value: 7260.00022888184,
   },
   {
     name: 'Costa Rica',
-    value: 64282438666.739,
+    value: 8239.99977111816,
   },
   {
     name: 'Côte d\'Ivoire',
-    value: 70043191477.0454,
+    value: 10829.9999237061,
   },
   {
     name: 'Croatia',
-    value: 68955083280.1922,
-  },
-  {
-    name: 'Curaçao',
-    value: 2699612458.10056,
+    value: 16520.0004577637,
   },
   {
     name: 'Cyprus',
-    value: 28407867534.0035,
+    value: 7190.00005722046,
   },
   {
     name: 'Czech Rep.',
-    value: 281777887121.451,
+    value: 96290.0009155273,
   },
   {
     name: 'Dem. Rep. Congo',
-    value: 55350968593.0597,
+    value: 3210.00003814697,
+  },
+  {
+    name: 'Dem. Rep. Korea',
+    value: 56040.0009155273,
   },
   {
     name: 'Denmark',
-    value: 398303272764.46,
+    value: 29700.0007629395,
   },
   {
     name: 'Djibouti',
-    value: 3482987379.0942,
+    value: 419.999986886978,
   },
   {
     name: 'Dominica',
-    value: 554181481.481481,
+    value: 170.000001788139,
   },
   {
     name: 'Dominican Rep.',
-    value: 94243453937.4462,
+    value: 27229.9995422363,
   },
   {
     name: 'Ecuador',
-    value: 106165866000,
+    value: 39290.0009155273,
   },
   {
     name: 'Egypt',
-    value: 404142766093.053,
+    value: 249369.995117188,
   },
   {
     name: 'El Salvador',
-    value: 28736940000,
+    value: 7800.00019073486,
   },
   {
     name: 'Eq. Guinea',
-    value: 12269392839.7472,
+    value: 5349.99990463257,
   },
   {
     name: 'Estonia',
-    value: 37191166151.98,
+    value: 10180.0003051758,
   },
   {
     name: 'Ethiopia',
-    value: 111271112329.975,
+    value: 18360.0006103516,
   },
   {
     name: 'Fiji',
-    value: 4296304590.01135,
+    value: 1629.99999523163,
   },
   {
     name: 'Finland',
-    value: 297301883523.251,
+    value: 40709.9990844727,
   },
   {
     name: 'France',
-    value: 2957879759263.52,
+    value: 300519.989013672,
   },
   {
     name: 'Gabon',
-    value: 20216843173.9702,
+    value: 5250,
   },
   {
     name: 'Gambia',
-    value: 2038417462.37695,
+    value: 579.999983310699,
   },
   {
     name: 'Georgia',
-    value: 18629365597.0017,
+    value: 10109.9996566772,
   },
   {
     name: 'Germany',
-    value: 4259934911821.64,
+    value: 657400.024414063,
   },
   {
     name: 'Ghana',
-    value: 77594279054.8795,
+    value: 20040.0009155273,
   },
   {
     name: 'Greece',
-    value: 214873879833.648,
-  },
-  {
-    name: 'Guam',
-    value: 6123000000,
+    value: 60000,
   },
   {
     name: 'Guatemala',
-    value: 85985752107.4679,
+    value: 19309.9994659424,
   },
   {
     name: 'Guinea',
-    value: 16091817842.2342,
+    value: 3950.00004768372,
   },
   {
     name: 'Guinea-Bissau',
-    value: 1638517533.16504,
+    value: 330.000013113022,
   },
   {
     name: 'Guyana',
-    value: 8044498800.95923,
+    value: 2849.99990463257,
   },
   {
     name: 'Haiti',
-    value: 20944392615.0803,
+    value: 3319.9999332428,
   },
   {
     name: 'Honduras',
-    value: 28488668301.6401,
+    value: 10220.0002670288,
   },
   {
     name: 'Hungary',
-    value: 181848022233.89,
+    value: 46380.0010681152,
   },
   {
     name: 'Iceland',
-    value: 25602419210.3374,
+    value: 1639.99998569489,
   },
   {
     name: 'India',
-    value: 3176295065497.24,
+    value: 2456300.04882813,
   },
   {
     name: 'Indonesia',
-    value: 1186092991320.04,
+    value: 619840.026855469,
   },
   {
     name: 'Iran',
-    value: 359713152725.062,
+    value: 630010.009765625,
   },
   {
     name: 'Iraq',
-    value: 207889333724.138,
+    value: 174559.997558594,
   },
   {
     name: 'Ireland',
-    value: 504182603275.542,
+    value: 35750,
   },
   {
     name: 'Israel',
-    value: 488526545878.891,
+    value: 62650.0015258789,
   },
   {
     name: 'Italy',
-    value: 2107702842669.73,
+    value: 317239.990234375,
   },
   {
     name: 'Jamaica',
-    value: 14657586937.0735,
+    value: 8390.00034332275,
   },
   {
     name: 'Japan',
-    value: 4940877780755.33,
+    value: 1081569.94628906,
   },
   {
     name: 'Jordan',
-    value: 45744271658.9141,
+    value: 24629.9991607666,
   },
   {
     name: 'Kazakhstan',
-    value: 197112255360.612,
+    value: 212110.000610352,
   },
   {
     name: 'Kenya',
-    value: 110347079517.356,
+    value: 22280.0006866455,
   },
   {
     name: 'Kiribati',
-    value: 207031250,
+    value: 90.0000035762787,
   },
   {
     name: 'Korea',
-    value: 1810955871380.98,
+    value: 610789.978027344,
   },
   {
     name: 'Kyrgyzstan',
-    value: 8543423502.6134,
+    value: 10050.0001907349,
   },
   {
     name: 'Lao PDR',
-    value: 18827148509.5798,
+    value: 18709.9990844727,
   },
   {
     name: 'Latvia',
-    value: 39853501579.8211,
+    value: 7570.00017166138,
   },
   {
     name: 'Lebanon',
-    value: 23131940280.7316,
+    value: 27950.0007629395,
   },
   {
     name: 'Lesotho',
-    value: 2496134680.31694,
+    value: 769.999980926514,
   },
   {
     name: 'Liberia',
-    value: 3509000000,
+    value: 1179.99994754791,
   },
   {
     name: 'Libya',
-    value: 42817472975.3677,
+    value: 56799.9992370605,
   },
   {
     name: 'Lithuania',
-    value: 66445256585.3671,
+    value: 11729.9995422363,
   },
   {
     name: 'Luxembourg',
-    value: 85506243833.7816,
+    value: 9489.99977111816,
   },
   {
     name: 'Macedonia',
-    value: 13825049831.7959,
+    value: 8300.00019073486,
   },
   {
     name: 'Madagascar',
-    value: 14472603322.5571,
+    value: 4119.99988555908,
   },
   {
     name: 'Malawi',
-    value: 12626717491.8941,
+    value: 1450.00004768372,
   },
   {
     name: 'Malaysia',
-    value: 372980957208.023,
+    value: 253270.004272461,
   },
   {
     name: 'Mali',
-    value: 19140461605.8227,
+    value: 5829.99992370605,
   },
   {
     name: 'Malta',
-    value: 17364044943.8202,
+    value: 1659.9999666214,
   },
   {
     name: 'Mauritania',
-    value: 9996249658.23982,
+    value: 3950.00004768372,
   },
   {
     name: 'Mauritius',
-    value: 11529042672.3528,
+    value: 4170.00007629395,
   },
   {
     name: 'Mexico',
-    value: 1272839334119.3,
+    value: 449269.989013672,
   },
   {
     name: 'Micronesia',
-    value: 404028900,
+    value: 180.000007152557,
   },
   {
     name: 'Moldova',
-    value: 13679221333.2052,
+    value: 8859.99965667725,
   },
   {
     name: 'Mongolia',
-    value: 15286441818.1437,
+    value: 23069.9996948242,
   },
   {
     name: 'Montenegro',
-    value: 5861268038.7982,
+    value: 2599.99990463257,
   },
   {
     name: 'Morocco',
-    value: 142866329198.42,
+    value: 71480.0033569336,
   },
   {
     name: 'Mozambique',
-    value: 15776758632.8573,
+    value: 7500,
   },
   {
     name: 'Myanmar',
-    value: 65091751273.2879,
+    value: 36720.0012207031,
   },
   {
     name: 'Namibia',
-    value: 12310595843.9353,
+    value: 4219.99979019165,
   },
   {
     name: 'Nepal',
-    value: 36288830373.4106,
+    value: 13449.9998092651,
   },
   {
     name: 'Netherlands',
-    value: 1012846760976.73,
-  },
-  {
-    name: 'New Caledonia',
-    value: 10071351960.0477,
+    value: 146339.996337891,
   },
   {
     name: 'New Zealand',
-    value: 249885687029.634,
+    value: 34009.9983215332,
   },
   {
     name: 'Nicaragua',
-    value: 14013022092.0645,
+    value: 5239.99977111816,
   },
   {
     name: 'Niger',
-    value: 14915001426.9724,
+    value: 2150.00009536743,
   },
   {
     name: 'Nigeria',
-    value: 440833583992.485,
+    value: 115279.998779297,
   },
   {
     name: 'Norway',
-    value: 482174854481.956,
+    value: 35950.0007629395,
   },
   {
     name: 'Oman',
-    value: 88191977373.212,
+    value: 76029.9987792969,
   },
   {
     name: 'Pakistan',
-    value: 348262544719.178,
+    value: 190570.007324219,
   },
   {
     name: 'Panama',
-    value: 63605100000,
+    value: 13340.0001525879,
   },
   {
     name: 'Papua New Guinea',
-    value: 26594305745.554,
+    value: 7579.99992370605,
   },
   {
     name: 'Paraguay',
-    value: 39495431574.1782,
+    value: 8210.00003814697,
   },
   {
     name: 'Peru',
-    value: 223249497500.387,
+    value: 56750,
   },
   {
     name: 'Philippines',
-    value: 394086401171.168,
+    value: 145419.998168945,
   },
   {
     name: 'Poland',
-    value: 679444832854.295,
+    value: 295130.004882813,
   },
   {
     name: 'Portugal',
-    value: 253663144586.019,
-  },
-  {
-    name: 'Puerto Rico',
-    value: 106525700000,
+    value: 44639.9993896484,
   },
   {
     name: 'Qatar',
-    value: 179677211793.938,
+    value: 91970.0012207031,
   },
   {
     name: 'Romania',
-    value: 284087563695.798,
+    value: 73949.9969482422,
   },
   {
     name: 'Russia',
-    value: 1778782625793.74,
+    value: 1703589.96582031,
   },
   {
     name: 'Rwanda',
-    value: 11070356519.4804,
+    value: 1330.00004291534,
   },
   {
     name: 'Samoa',
-    value: 843842416.462442,
+    value: 300.000011920929,
   },
   {
     name: 'São Tomé and Principe',
-    value: 526653790.670814,
+    value: 150.000005960464,
   },
   {
     name: 'Saudi Arabia',
-    value: 833541236569.315,
+    value: 523780.029296875,
   },
   {
     name: 'Senegal',
-    value: 27625388352.1688,
+    value: 10619.9998855591,
   },
   {
     name: 'Serbia',
-    value: 63082047649.8528,
+    value: 45950.0007629395,
   },
   {
     name: 'Seychelles',
-    value: 1454458183.85981,
+    value: 610.000014305115,
   },
   {
     name: 'Sierra Leone',
-    value: 4042237864.28942,
+    value: 899.999976158142,
   },
   {
     name: 'Singapore',
-    value: 396986899888.351,
+    value: 47380.0010681152,
   },
   {
     name: 'Slovakia',
-    value: 116527101097.7,
+    value: 31079.9999237061,
   },
   {
     name: 'Slovenia',
-    value: 61748586534.8672,
+    value: 13600.0003814697,
   },
   {
     name: 'Solomon Is.',
-    value: 1631486531.92364,
+    value: 360.000014305115,
   },
   {
     name: 'Somalia',
-    value: 7628000011.46184,
+    value: 689.999997615814,
   },
   {
     name: 'South Africa',
-    value: 419015018371.887,
+    value: 439640.014648438,
   },
   {
     name: 'Spain',
-    value: 1427380681294.55,
+    value: 239979.995727539,
   },
   {
     name: 'Sri Lanka',
-    value: 88927263724.8592,
+    value: 23780.0006866455,
   },
   {
     name: 'St. Vin. and Gren.',
-    value: 904181492.766708,
+    value: 259.999990463257,
   },
   {
     name: 'Sudan',
-    value: 34326058557.4418,
+    value: 20620.0008392333,
   },
   {
     name: 'Suriname',
-    value: 2984706243.65482,
+    value: 2650.00009536743,
   },
   {
     name: 'Swaziland',
-    value: 4743335152.94181,
+    value: 959.999978542328,
   },
   {
     name: 'Sweden',
-    value: 635663801201.765,
+    value: 35000,
   },
   {
     name: 'Switzerland',
-    value: 800640155387.26,
+    value: 37380.0010681152,
   },
   {
     name: 'Tajikistan',
-    value: 8746270636.40142,
+    value: 9420.00007629395,
   },
   {
     name: 'Tanzania',
-    value: 67841049193.3855,
+    value: 12449.9998092651,
   },
   {
     name: 'Thailand',
-    value: 505947037098.424,
+    value: 267089.996337891,
   },
   {
     name: 'Timor-Leste',
-    value: 3621222382.15929,
+    value: 620.000004768372,
   },
   {
     name: 'Togo',
-    value: 8413200567.6151,
+    value: 2369.99988555908,
   },
   {
     name: 'Tonga',
-    value: 469231309.539488,
+    value: 159.999996423721,
   },
   {
     name: 'Trinidad and Tobago',
-    value: 24460196270.6866,
+    value: 17190.00053405760,
   },
   {
     name: 'Tunisia',
-    value: 46686741814.278,
+    value: 29909.9998474121,
   },
   {
     name: 'Turkey',
-    value: 819035182929.585,
+    value: 396839.996337891,
   },
   {
     name: 'Uganda',
-    value: 40529789025.5702,
+    value: 5860.0001335144,
   },
   {
     name: 'United Arab Emirates',
-    value: 415021590683.006,
+    value: 188860.000610352,
   },
   {
     name: 'Ukraine',
-    value: 200085537744.354,
+    value: 174729.995727539,
   },
   {
     name: 'United Kingdom',
-    value: 3131377762925.95,
+    value: 348920.013427734,
   },
   {
     name: 'United States',
-    value: 23315080560000,
+    value: 4817720.21484375,
   },
   {
     name: 'Uruguay',
-    value: 59319484710.6527,
+    value: 6489.99977111816,
   },
   {
     name: 'Uzbekistan',
-    value: 69238903106.1738,
+    value: 116709.999084473,
   },
   {
     name: 'Vanuatu',
-    value: 956332655.718234,
+    value: 209.999993443489,
   },
   {
     name: 'Vietnam',
-    value: 366137590600.699,
+    value: 336489.990234375,
   },
   {
     name: 'Zambia',
-    value: 22147634727.3584,
+    value: 6800.00019073486,
   },
   {
     name: 'Zimbabwe',
-    value: 28371238665.5116,
+    value: 11760.0002288818,
   },
 ]
 
 /**
- * 各国 2021年 GDP 最大值
+ * 各国 2021年 CO2 Emissions 最大值
  * @type {number}
  */
-const MAX = DATA.reduce((pre, cur) => cur.value > pre ? cur.value : pre, Number.MIN_VALUE)
+const MAXs = DATAs.reduce((pre, cur) => cur.value > pre ? cur.value : pre, Number.MIN_VALUE)
 
 /**
- * 各国 2021年 GDP 最小值
+ * 各国 2021年 CO2 Emissions 最小值
  * @type {number}
  */
-const MIN = DATA.reduce((pre, cur) => cur.value < pre ? cur.value : pre, Number.MAX_VALUE)
+const MINs = DATAs.reduce((pre, cur) => cur.value < pre ? cur.value : pre, Number.MAX_VALUE)
