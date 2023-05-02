@@ -1,5 +1,7 @@
 const path = require('path')
+const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const TerserWebpackPlugin = require('terser-webpack-plugin')
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
@@ -18,7 +20,15 @@ module.exports = {
     maxAssetSize: 1024 * 256,
     maxEntrypointSize: 1024 * 512,
   },
-  devtool: 'source-map',
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserWebpackPlugin({
+      include: path.resolve(__dirname, 'src'),
+      exclude: /node_modules/,
+      extractComments: process.env.NODE_ENV !== 'development',
+    })],
+  },
+  devtool: process.env.NODE_ENV === 'development' ? 'cheap-module-eval-source-map' : 'hidden-source-map',
   devServer: {
     hot: true,
     inline: true,
@@ -35,17 +45,17 @@ module.exports = {
   watch: true,
   watchOptions: {
     ignored: /node_modules/,
-    aggregateTimeout: 500,
+    aggregateTimeout: 300,
     poll: 1000,
   },
-  resolve:{
-    alias:{
+  resolve: {
+    alias: {
       '@': path.resolve(__dirname, './src'),
     },
     symlinks: true,
-    mainFields: ['jsnext:main', 'browser', 'main'],
+    mainFields: ['jsnext:main', 'browser', 'module', 'main'],
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
-    modules:['node_modules'],
+    modules: [path.resolve(__dirname, 'node_modules')],
     descriptionFiles: ['package.json'],
     enforceExtension: false,
     enforceModuleExtension: false,
@@ -54,21 +64,31 @@ module.exports = {
     rules: [
       {
         test: /\.[cm]?js$/i,
-        use: 'babel-loader?cacheDirectory',
+        use: ['thread-loader', 'babel-loader?cacheDirectory'],
+        include: path.resolve(__dirname, 'src'),
         exclude: /node_modules/,
       },
       {
         test: /\.[cm]?ts$/i,
-        use: 'ts-loader',
+        use: ['thread-loader', 'ts-loader'],
+        include: path.resolve(__dirname, 'src'),
         exclude: /node_modules/,
       },
       {
         test: /\.css$/i,
-        use: [process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+        use: [process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader?minimize', 'postcss-loader'],
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: [process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader?minimize', 'postcss-loader', 'sass-loader'],
+      },
+      {
+        test: /\.less$/i,
+        use: [process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader?minimize', 'postcss-loader', 'less-loader'],
+      },
+      {
+        test: /\.styl$/i,
+        use: [process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader?minimize', 'postcss-loader', 'stylus-loader'],
       },
       {
         test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
@@ -76,5 +96,11 @@ module.exports = {
       },
     ],
   },
-  plugins: [].concat(process.env.NODE_ENV === 'development' ? [] : [new MiniCssExtractPlugin()]),
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    })].concat(process.env.NODE_ENV === 'development' ? [] : [new MiniCssExtractPlugin({
+    filename: '',
+    chunkFilename: '',
+  })]),
 }
