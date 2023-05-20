@@ -22,20 +22,26 @@ export class ArticlesController {
 
   @Post()
   @ApiCreatedResponse({ type: ArticleEntity })
-  create(@Body() createArticleDto: CreateArticleDto) {
-    return this.articlesService.create(createArticleDto);
+  async create(@Body() createArticleDto: CreateArticleDto) {
+    return new ArticleEntity(
+      await this.articlesService.create(createArticleDto),
+    );
   }
 
   @Get()
   @ApiCreatedResponse({ type: ArticleEntity, isArray: true })
-  findAll() {
-    return this.articlesService.findAll();
+  async findAll() {
+    return (await this.articlesService.findAll()).map(
+      (article) => new ArticleEntity(article),
+    );
   }
 
   @Get('drafts')
   @ApiCreatedResponse({ type: ArticleEntity, isArray: true })
-  findDrafts() {
-    return this.articlesService.findDrafts();
+  async findDrafts() {
+    return (await this.articlesService.findDrafts()).map(
+      (article) => new ArticleEntity(article),
+    );
   }
 
   @Get(':id')
@@ -44,7 +50,7 @@ export class ArticlesController {
     const article = await this.articlesService.findOne(id);
     if (!article)
       throw new NotFoundException(`Article with ${id} does not exist.`);
-    return article;
+    return new ArticleEntity(article);
   }
 
   @Patch(':id')
@@ -56,7 +62,7 @@ export class ArticlesController {
     const article = await this.articlesService.update(id, updateArticleDto);
     if (!article)
       throw new NotFoundException(`Article with ${id} does not exist.`);
-    return article;
+    return new ArticleEntity(article);
   }
 
   @Delete(':id')
@@ -65,6 +71,6 @@ export class ArticlesController {
     const article = await this.articlesService.remove(id);
     if (!article)
       throw new NotFoundException(`Article with ${id} does not exist.`);
-    return article;
+    return new ArticleEntity(article);
   }
 }
