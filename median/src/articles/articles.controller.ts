@@ -13,6 +13,7 @@ import { ArticlesService } from './articles.service';
 import { CreateArticleDto } from './dto/create-article.dto';
 import { UpdateArticleDto } from './dto/update-article.dto';
 import { ArticleEntity } from './entities/article.entity';
+import { NotFoundException } from '@nestjs/common/exceptions';
 
 @Controller('articles')
 @ApiTags('articles')
@@ -39,22 +40,31 @@ export class ArticlesController {
 
   @Get(':id')
   @ApiCreatedResponse({ type: ArticleEntity })
-  findOne(@Param('id', ParseIntPipe) id: number) {
-    return this.articlesService.findOne(id);
+  async findOne(@Param('id', ParseIntPipe) id: number) {
+    const article = await this.articlesService.findOne(id);
+    if (!article)
+      throw new NotFoundException(`Article with ${id} does not exist.`);
+    return article;
   }
 
   @Patch(':id')
   @ApiCreatedResponse({ type: ArticleEntity })
-  update(
+  async update(
     @Param('id', ParseIntPipe) id: number,
     @Body() updateArticleDto: UpdateArticleDto,
   ) {
-    return this.articlesService.update(id, updateArticleDto);
+    const article = await this.articlesService.update(id, updateArticleDto);
+    if (!article)
+      throw new NotFoundException(`Article with ${id} does not exist.`);
+    return article;
   }
 
   @Delete(':id')
   @ApiCreatedResponse({ type: ArticleEntity })
-  remove(@Param('id', ParseIntPipe) id: number) {
-    return this.articlesService.remove(id);
+  async remove(@Param('id', ParseIntPipe) id: number) {
+    const article = await this.articlesService.remove(id);
+    if (!article)
+      throw new NotFoundException(`Article with ${id} does not exist.`);
+    return article;
   }
 }
