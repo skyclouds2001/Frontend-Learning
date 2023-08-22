@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+  <head></head>
+  <body>
+    <textarea id="el"></textarea>
+    <script>
+      const el = document.getElementById('el')
+
+      el.addEventListener('keydown', () => {
+        console.log('keydown')
+      })
+
+      el.addEventListener('keypress', () => {
+        console.log('keypress')
+      })
+
+      el.addEventListener('beforeinput', () => {
+        console.log('beforeinput')
+      })
+
+      el.addEventListener('input', () => {
+        console.log('input')
+      })
+
+      el.addEventListener('keyup', () => {
+        console.log('keyup')
+      })
+
+      el.addEventListener('compositionstart', () => {
+        console.log('compositionstart')
+      })
+
+      el.addEventListener('compositionupdate', () => {
+        console.log('compositionupdate')
+      })
+
+      el.addEventListener('compositionend', () => {
+        console.log('compositionend')
+      })
+    </script>
+  </body>
+</html>
