@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .ball {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background-color: #0cf;
+
+      animation:
+        horizontal 2.6s infinite linear alternate,
+        vertical 1.9s infinite linear alternate,
+        horizontal-color 26s infinite steps(10),
+        vertical-color 19s infinite steps(10);
+      animation-composition: accumulate;
+    }
+
+    @keyframes horizontal {
+      from {
+        transform: translateX(0);
+      } to {
+        transform: translateX(calc(100vw - 100%));
+      }
+    }
+
+    @keyframes vertical {
+      from {
+        transform: translateY(0);
+      } to {
+        transform: translateY(calc(100vh - 100%));
+      }
+    }
+
+    @keyframes horizontal-color {
+      to {
+        filter: hue-rotate(360deg);
+      }
+    }
+
+    @keyframes vertical-color {
+      to {
+        filter: hue-rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body style="margin: 0; padding: 0;">
+  <div style="width: 100vw; height: 100vh; position: relative;">
+    <div class="ball"></div>
+  </div>
+</body>
+</html>
