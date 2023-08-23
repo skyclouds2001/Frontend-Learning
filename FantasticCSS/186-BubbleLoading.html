@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    :root {
+      --circle-radius: 150px;
+      --bubble-radius: 15px;
+      --start-color: hsl(130, 75%, 75%);
+      --end-color: hsl(60, 75%, 40%);
+      --start-percenter: 0%;
+      --end-percenter: 20%;
+    }
+
+    #container {
+      position: relative;
+      width: calc(var(--circle-radius) * 2);
+      height: calc(var(--circle-radius) * 2);
+      margin: 0;
+      padding: 5px;
+
+      filter: blur(3px) contrast(5);
+      background-color: #000;
+
+      animation: container 8s infinite linear;
+    }
+
+    #circle {
+      position: relative;
+      width: calc(var(--circle-radius) * 2);
+      height: calc(var(--circle-radius) * 2);
+      border-radius: 50%;
+
+      background: conic-gradient(
+        var(--start-color) var(--start-percenter), 
+        var(--start-color) calc(var(--start-percenter) - 2%),
+        hsl(120, 75%, 70%), 
+        hsl(110, 75%, 65%), 
+        hsl(100, 75%, 60%),
+        hsl(90, 75%, 55%), 
+        hsl(80, 75%, 50%),
+        hsl(70, 75%, 45%),
+        var(--end-color) calc(var(--end-percenter) - 2%),
+        var(--end-color) var(--end-percenter),
+        transparent var(--end-percenter)
+      );
+      -webkit-mask: radial-gradient(transparent, transparent 119px, #000 120px, #000);
+      mask: radial-gradient(transparent, transparent 119px, #000 120px, #000);
+
+      animation: rotate 4s infinite -700ms linear;
+
+      &::before, &::after {
+        content: '';
+        position: absolute;
+        width: calc(var(--bubble-radius) * 2);
+        height: calc(var(--bubble-radius) * 2);
+        border-radius: 50%;
+      }
+
+      &::before {
+        background: var(--start-color);
+        top: 0;
+        left: calc(var(--circle-radius) - var(--bubble-radius));
+      }
+
+      &::after {
+        background: var(--end-color);
+        top: 93px;
+        right: 7px;
+      }
+    }
+
+    .bubbles {
+      position: absolute;
+      width: calc(var(--bubble-radius) * 2);
+      height: calc(var(--bubble-radius) * 2);
+
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+      border-radius: 50px;
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--end-color);
+    }
+
+    @keyframes container {
+      100% {
+        filter: blur(3px) contrast(5) hue-rotate(360deg);
+      }
+    }
+
+    @keyframes rotate {
+      100% {
+        transform: rotate(-360deg);
+      }
+    }
+
+    @keyframes express {
+      0% {
+        opacity: 0;
+        transform: rotateZ(var(--rotate)) translate(135px, 0);
+      }
+      70% {
+        opacity: 0;
+      }
+      71% {
+        transform: rotateZ(var(--rotate)) translate(135px, 0) scale(var(--scale));
+        opacity: 1;
+      }
+      100% {
+        transform: rotateZ(var(--rotate)) translate(calc(135px + var(--x)), var(--y)) scale(0.2);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body style="margin: 0; padding: 0; width: 100%; height: 100%; display: grid; place-content: center; background: #000;">
+  <div id="container">
+    <div id="circle"></div>
+  </div>
+  <script module>
+    const COUNT = 200
+
+    const container = document.getElementById('container')
+
+    const bubbles = document.createElement('div')
+    bubbles.classList.add('bubbles')
+    container.appendChild(bubbles)
+
+    for (let i = 0; i < COUNT; ++i) {
+      const bubble = document.createElement('div')
+      bubble.classList.add('bubble')
+      bubbles.appendChild(bubble)
+
+      document.styleSheets.item(0).insertRule(`
+        .bubble:nth-child(${i}) {
+          --rotate: ${360 * (i / COUNT)}deg;
+          --distance: ${Math.random() * 100}px;
+          --radius: 30px;
+          --scale: ${0.4 + Math.random()};
+          --x: ${Math.random() * 200 - 100}px;
+          --y: ${Math.random() * 200 - 100}px;
+          transform: rotateZ(var(--rotate)) translate(135px, 0);
+          opacity: 1;
+          width: var(--radius);
+          height: var(--radius);
+          animation: express 4s linear ${4000 * (i / COUNT) * -1}ms infinite;
+        }
+      `)
+    }
+  </script>
+</body>
+</html>
