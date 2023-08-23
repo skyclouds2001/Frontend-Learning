@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 750px;
+      height: 500px;
+      aspect-ratio: 3 / 2;
+      box-shadow: 0 20px 40px 1px rgba(0, 0, 0, 0.12),
+        inset 0 -10px 20px -5px rgba(0, 0, 0, 0.3),
+        0 150px 100px -80px rgba(0, 0, 0, 0.4),
+        inset 0 1px 4px hsla(0, 0%, 100%, 0.6),
+        inset 0 -1px 1px 1px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      pointer-events: none;
+      transition: all 0.5s, --angle 0.5s;
+
+      backdrop-filter: blur(15px);
+
+      transform-style: preserve-3d;
+
+      background-image: linear-gradient(var(--angle), rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.25));
+      mask: linear-gradient(var(--angle), rgba(255, 255, 255, 0.8), #fff, #fff);
+    }
+
+    @property --angle {
+      syntax: "<angle>";
+      inherits: false;
+      initial-value: -45deg;
+    }
+  </style>
+</head>
+<body style="width: 100vw; height: 100vh; background-image: url(https://picsum.photos/id/242/1920/1080); background-size: cover; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center;">
+  <div id="box"></div>
+  <script>
+    const box = document.getElementById('box')
+    const rect = box.getBoundingClientRect()
+
+    const translateRateX = 15 / (rect.x + rect.width / 2)
+    const translateRateY = 10 / (rect.y + rect.height / 2)
+    const rotateRateX = 16 / (rect.y + rect.height / 2)
+    const rotateRateY = 24 / (rect.x + rect.width / 2)
+
+    document.body.addEventListener('mousemove', (e) => {
+      window.requestAnimationFrame(() => {
+        box.style.transform = `
+          translateX(${(e.clientX - rect.x - rect.width / 2) * translateRateX}px)
+          translateY(${(e.clientY - rect.y - rect.height / 2) * translateRateY}px)
+          translateZ(100px)
+          rotateX(${(e.clientY - rect.y - rect.height / 2) * rotateRateX}deg)
+          rotateY(${(e.clientX - rect.x - rect.width / 2) * rotateRateY}deg)
+        `.trim()
+        box.style.setProperty('--angle', `${-Math.atan2(e.clientX - rect.x - rect.width / 2, e.clientY - rect.y - rect.height / 2) * 180 / Math.PI}deg`);
+      })
+    })
+  </script>
+</body>
+</html>
