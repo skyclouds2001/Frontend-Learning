@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ServiceWorker</title>
+</head>
+<body>
+  <script>
+    window.navigator.serviceWorker.register('./service-worker.js', {
+      scope: '/',
+      type: 'module',
+      updateViaCache: 'all',
+    }).then((registration) => {
+      console.log('client | registration success', registration);
+    }).catch((error) => {
+      console.log('client | registration fail', error);
+    }).finally(() => {
+      fetch('/override/success').then(console.log).catch(console.warn)
+      fetch('/override/error').then(console.log).catch(console.warn)
+      fetch('/override/redirect').then(console.log).catch(console.warn)
+
+      window.navigator.serviceWorker.addEventListener('message', (e) => {
+        console.log('client | message', e)
+      })
+      window.navigator.serviceWorker.addEventListener('messageerror', (e) => {
+        console.log('client | messageerror', e)
+      })
+      window.navigator.serviceWorker.ready.then((registration) => {
+        registration.active.postMessage('message from client')
+      })
+    })
+  </script>
+</body>
+</html>
