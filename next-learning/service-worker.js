@@ -1,4 +1,6 @@
 /// <reference no-default-lib="true" />
+/// <reference lib="esnext" />
+/// <reference lib="dom" />
 /// <reference lib="webworker" />
 /// @ts-check
 
@@ -35,14 +37,6 @@ global.addEventListener('error', (e) => {
 
 global.addEventListener('languagechange', (e) => {
   console.log('worker | languagechange', e)
-})
-
-global.addEventListener('online', (e) => {
-  console.log('worker | online', e)
-})
-
-global.addEventListener('offline', (e) => {
-  console.log('worker | offline', e)
 })
 
 // eval('d = 10')
