@@ -39,6 +39,22 @@ global.addEventListener('languagechange', (e) => {
   console.log('worker | languagechange', e)
 })
 
+global.addEventListener('online', (e) => {
+  console.log('worker | online', e)
+})
+
+global.addEventListener('offline', (e) => {
+  console.log('worker | offline', e)
+})
+
+global.addEventListener('rejectionhandled', (e) => {
+  console.log('worker | rejectionhandled', e)
+})
+
+global.addEventListener('unhandledrejection', (e) => {
+  console.log('worker | unhandledrejection', e)
+})
+
 // eval('d = 10')
 
 global.clients.matchAll().then((clients) => {
