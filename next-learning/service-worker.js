@@ -70,3 +70,39 @@ global.addEventListener('message', (e) => {
 global.addEventListener('messageerror', (e) => {
   console.log('worker | messageerror', e)
 })
+
+const STORE_KEY = 'key'
+
+global.caches.open(STORE_KEY).then((cache) => {
+  cache.put('/cache', new Response('cache'))
+  cache.put(new URL('/cache'), new Response('cache'))
+  cache.put(new Request('/cache'), new Response('cache'))
+
+  cache.match('/cache').then((response) => {
+    console.log('worker | cache match', response)
+  })
+
+  cache.delete('/cache').then((success) => {
+    console.log('worker | cache delete', success)
+  })
+  cache.delete(new URL('/cache')).then((success) => {
+    console.log('worker | cache delete', success)
+  })
+  cache.delete(new Request('/cache')).then((success) => {
+    console.log('worker | cache delete', success)
+  })
+
+  cache.keys().then((keys) => {
+    keys.forEach((key) => {
+      cache.delete(key)
+    })
+  })
+})
+
+global.caches.has(STORE_KEY).then((has) => {
+  console.log('worker | has cache', has)
+})
+
+global.caches.delete(STORE_KEY).then((deleted) => {
+  console.log('worker | has deleted cache', deleted)
+})
