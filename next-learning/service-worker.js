@@ -74,11 +74,19 @@ global.addEventListener('messageerror', (e) => {
 const STORE_KEY = 'key'
 
 global.caches.open(STORE_KEY).then((cache) => {
+  console.log('worker | cache', cache)
+
   cache.put('/cache', new Response('cache'))
   cache.put(new URL('/cache'), new Response('cache'))
   cache.put(new Request('/cache'), new Response('cache'))
 
   cache.match('/cache').then((response) => {
+    console.log('worker | cache match', response)
+  })
+  cache.match(new URL('/cache')).then((response) => {
+    console.log('worker | cache match', response)
+  })
+  cache.match(new Request('/cache')).then((response) => {
     console.log('worker | cache match', response)
   })
 
@@ -105,4 +113,86 @@ global.caches.has(STORE_KEY).then((has) => {
 
 global.caches.delete(STORE_KEY).then((deleted) => {
   console.log('worker | has deleted cache', deleted)
+})
+
+global.caches.keys().then((keys) => {
+  console.log('worker | all caches keys', keys)
+})
+
+global.caches.match(
+  '/cache',
+  {
+    ignoreSearch: false,
+    ignoreMethod: false,
+    ignoreVary: false,
+  }
+).then((data) => {
+  if (data) {
+    console.log('worker | have resource', data)
+  } else {
+    console.log('worker | not have resource', data)
+  }
+})
+
+global.caches.match(new URL('/cache'))
+
+global.caches.match(new Request('/cache'))
+
+global.addEventListener('install', (e) => {
+  e.waitUntil(
+    caches
+      .open('v2')
+      .then((cache) => 
+        cache.addAll([
+          '/',
+          '/index.html',
+          "/style.css",
+          "/app.js",
+        ])
+      )
+  )
+})
+
+global.addEventListener('activate', (e) => {
+  const CacheNeedMove = ['v1']
+
+  e.waitUntil(
+    caches.keys().then((keys) => 
+      Promise.all(
+        keys.map((key) => {
+          if (CacheNeedMove.includes(key)) {
+            return caches.delete(key)
+          }
+        })
+      )
+    )
+  )
+})
+
+global.addEventListener('fetch', (e) => {
+  e.respondWith(
+    caches.match(e.request).then((response) => {
+      if (response != null) {
+        return response
+      } else {
+        return fetch(e.request)
+          .then((response) => {
+            const res = response.clone()
+
+            caches.has('v2').then((has) => {
+              if (has) {
+                caches.open('v2').then((cache) => {
+                  cache.put(e.request, res)
+                })
+              } else {
+                // init cache: v2
+              }
+            })
+
+            return response
+          })
+          // .catch(() => caches.match('/404'))
+      }
+    })
+  )
 })
