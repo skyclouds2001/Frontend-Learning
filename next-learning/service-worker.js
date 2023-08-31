@@ -76,6 +76,12 @@ const STORE_KEY = 'key'
 global.caches.open(STORE_KEY).then((cache) => {
   console.log('worker | cache', cache)
 
+  cache.add('/cache')
+  cache.add(new URL('/cache'))
+  cache.add(new Request('/cache'))
+
+  cache.addAll(['/cache', new Request('/cache')])
+
   cache.put('/cache', new Response('cache'))
   cache.put(new URL('/cache'), new Response('cache'))
   cache.put(new Request('/cache'), new Response('cache'))
@@ -88,6 +94,16 @@ global.caches.open(STORE_KEY).then((cache) => {
   })
   cache.match(new Request('/cache')).then((response) => {
     console.log('worker | cache match', response)
+  })
+
+  cache.matchAll('/cache').then((responses) => {
+    console.log('worker | caches match', responses)
+  })
+  cache.matchAll(new URL('/cache')).then((responses) => {
+    console.log('worker | caches match', responses)
+  })
+  cache.matchAll(new Request('/cache')).then((responses) => {
+    console.log('worker | caches match', responses)
   })
 
   cache.delete('/cache').then((success) => {
@@ -140,7 +156,7 @@ global.caches.match(new Request('/cache'))
 
 global.addEventListener('install', (e) => {
   e.waitUntil(
-    caches
+    global.caches
       .open('v2')
       .then((cache) => 
         cache.addAll([
@@ -157,7 +173,7 @@ global.addEventListener('activate', (e) => {
   const CacheNeedMove = ['v1']
 
   e.waitUntil(
-    caches.keys().then((keys) => 
+    global.caches.keys().then((keys) => 
       Promise.all(
         keys.map((key) => {
           if (CacheNeedMove.includes(key)) {
@@ -171,28 +187,53 @@ global.addEventListener('activate', (e) => {
 
 global.addEventListener('fetch', (e) => {
   e.respondWith(
-    caches.match(e.request).then((response) => {
-      if (response != null) {
-        return response
-      } else {
-        return fetch(e.request)
-          .then((response) => {
-            const res = response.clone()
+    global.caches
+      .match(e.request)
+      .then((response) => {
+        if (response != null) {
+          return response
+        } else {
+          return fetch(e.request.clone())
+            .then((response) => {
+              global.caches.has('v2').then((has) => {
+                if (has) {
+                  const res = response.clone()
 
-            caches.has('v2').then((has) => {
-              if (has) {
-                caches.open('v2').then((cache) => {
-                  cache.put(e.request, res)
-                })
-              } else {
-                // init cache: v2
-              }
+                  global.caches.open('v2').then((cache) => {
+                    cache.put(e.request, res)
+                  })
+                } else {
+                  // init cache - v2
+                }
+              })
+
+              return response
             })
+            .catch(() => caches.match('/404'))
+        }
+      })
+  )
+})
 
+global.addEventListener('fetch', (e) => {
+  e.respondWith(
+    global.caches
+      .open('v2')
+      .then((cache) => cache
+        .match(e.request)
+        .then((response) => {
+          if (response != null) {
             return response
-          })
-          // .catch(() => caches.match('/404'))
-      }
-    })
+          } else {
+            return fetch(e.request.clone())
+              .then((response) => {
+                cache.put(e.request, response.clone())
+
+                return response
+              })
+              .catch(() => caches.match('/404'))
+          }
+        })
+      )
   )
 })
