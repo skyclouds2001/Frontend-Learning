@@ -1,6 +1,5 @@
 /// <reference no-default-lib="true" />
 /// <reference lib="esnext" />
-/// <reference lib="dom" />
 /// <reference lib="webworker" />
 /// @ts-check
 
@@ -265,4 +264,27 @@ global.registration.getNotifications({
   tag: 'tag',
 }).then((notifications) => {
   //
+})
+
+global.registration.pushManager.subscribe({
+  userVisibleOnly: true,
+  applicationServerKey: '',
+}).then((subscription) => {
+  console.log(subscription)
+})
+
+global.registration.pushManager.getSubscription().then((subscription) => {
+  if (subscription != null) {
+    console.log(subscription)
+  }
+})
+
+global.addEventListener('push', (e) => {
+  console.log(e)
+
+  global.registration.showNotification(e.data?.json().title)
+})
+
+global.addEventListener('pushsubscriptionchange', (e) => {
+  console.log(e)
 })
