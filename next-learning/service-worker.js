@@ -177,7 +177,7 @@ global.addEventListener('activate', (e) => {
       Promise.all(
         keys.map((key) => {
           if (CacheNeedMove.includes(key)) {
-            return caches.delete(key)
+            return global.caches.delete(key)
           }
         })
       )
@@ -209,7 +209,7 @@ global.addEventListener('fetch', (e) => {
 
               return response
             })
-            .catch(() => caches.match('/404'))
+            .catch(() => global.caches.match('/404'))
         }
       })
   )
@@ -231,9 +231,38 @@ global.addEventListener('fetch', (e) => {
 
                 return response
               })
-              .catch(() => caches.match('/404'))
+              .catch(() => global.caches.match('/404'))
           }
         })
       )
   )
+})
+
+global.addEventListener('notificationclick', (e) => {
+  console.log('Notification click', e)
+})
+
+global.addEventListener('notificationclose', (e) => {
+  console.log('Notification close', e)
+})
+
+global.registration.showNotification('Hello', {
+  body: 'this is a notification',
+  icon: '<url>',
+  actions: [
+    {
+      title: 'Yes',
+      action: 'Yes',
+    },
+    {
+      title: 'No',
+      action: 'No',
+    },
+  ],
+})
+
+global.registration.getNotifications({
+  tag: 'tag',
+}).then((notifications) => {
+  //
 })

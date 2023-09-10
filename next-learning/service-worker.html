@@ -42,6 +42,39 @@
       window.navigator.serviceWorker.ready.then((registration) => {
         registration.active.postMessage('message from client')
       })
+
+      if (Notification.permission === 'granted') {
+        // just go to create the notification
+      } else if (Notification.permission != 'denied') {
+        Notification.requestPermission().then((result) => {
+          if (result === 'granted') {
+            // then go to create the notification
+          }
+        })
+      }
+
+      window.navigator.serviceWorker.ready.then((registration) => {
+        registration.showNotification('Hello', {
+          body: 'this is a notification',
+          icon: '<url>',
+          actions: [
+            {
+              title: 'Yes',
+              action: 'Yes',
+            },
+            {
+              title: 'No',
+              action: 'No',
+            },
+          ],
+        })
+
+        registration.getNotifications({
+          tag: 'tag',
+        }).then((notifications) => {
+          //
+        })
+      })
     })
   </script>
 </body>
