@@ -288,3 +288,35 @@ global.addEventListener('push', (e) => {
 global.addEventListener('pushsubscriptionchange', (e) => {
   console.log(e)
 })
+
+global.registration.pushManager.permissionState({
+  userVisibleOnly: true,
+  applicationServerKey: '',
+}).then((state) => {
+  switch(state) {
+    case "denied":
+      break
+    case "granted":
+      break
+    case "prompt":
+      break
+  }
+})
+
+global.addEventListener('push', (e) => {
+  const data = e.data?.json() ?? {}
+
+  const title = data.title || 'Notification'
+  const message = data.message || ''
+  const icon = 'images/icon.png'
+
+  global.registration.showNotification(title, {
+    body: message,
+    tag: 'v1',
+    icon,
+  }).then(() => {
+    global.addEventListener('notificationclick', () => {
+      global.clients.openWindow('https://www.baidu.com')
+    })
+  })
+})
