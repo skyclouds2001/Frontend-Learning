@@ -1,7 +1,6 @@
 /// <reference no-default-lib="true" />
 /// <reference lib="esnext" />
 /// <reference lib="webworker" />
-/// @ts-check
 
 /** @type {ServiceWorkerGlobalScope} */
 const global = globalThis
@@ -264,59 +263,4 @@ global.registration.getNotifications({
   tag: 'tag',
 }).then((notifications) => {
   //
-})
-
-global.registration.pushManager.subscribe({
-  userVisibleOnly: true,
-  applicationServerKey: '',
-}).then((subscription) => {
-  console.log(subscription)
-})
-
-global.registration.pushManager.getSubscription().then((subscription) => {
-  if (subscription != null) {
-    console.log(subscription)
-  }
-})
-
-global.addEventListener('push', (e) => {
-  console.log(e)
-
-  global.registration.showNotification(e.data?.json().title)
-})
-
-global.addEventListener('pushsubscriptionchange', (e) => {
-  console.log(e)
-})
-
-global.registration.pushManager.permissionState({
-  userVisibleOnly: true,
-  applicationServerKey: '',
-}).then((state) => {
-  switch(state) {
-    case "denied":
-      break
-    case "granted":
-      break
-    case "prompt":
-      break
-  }
-})
-
-global.addEventListener('push', (e) => {
-  const data = e.data?.json() ?? {}
-
-  const title = data.title || 'Notification'
-  const message = data.message || ''
-  const icon = 'images/icon.png'
-
-  global.registration.showNotification(title, {
-    body: message,
-    tag: 'v1',
-    icon,
-  }).then(() => {
-    global.addEventListener('notificationclick', () => {
-      global.clients.openWindow('https://www.baidu.com')
-    })
-  })
 })

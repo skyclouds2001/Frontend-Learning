@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sync</title>
+</head>
+<body>
+  <script>
+    const KEY = ''
+
+    window.navigator.serviceWorker.register('/push.js')
+
+    window.navigator.serviceWorker.ready.then((registration) => {
+      registration.pushManager.permissionState({
+        userVisibleOnly: true,
+        applicationServerKey: KEY,
+      }).then((state) => {
+        switch(state) {
+          case "prompt":
+            break
+          case "denied":
+            break
+          case "granted":
+            registration.pushManager.subscribe({
+              userVisibleOnly: true,
+              applicationServerKey: KEY,
+            }).then(() => {
+              registration.pushManager.getSubscription().then((subscription) => {
+                if (subscription != null) {
+                  console.log('endpoint: ', subscription.endpoint)
+                  console.log('expiration time: ', subscription.expirationTime)
+                }
+              })
+            })
+            break
+        }
+      })
+    })
+  </script>
+</body>
+</html>
