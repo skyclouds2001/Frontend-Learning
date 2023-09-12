@@ -235,32 +235,3 @@ global.addEventListener('fetch', (e) => {
       )
   )
 })
-
-global.addEventListener('notificationclick', (e) => {
-  console.log('Notification click', e)
-})
-
-global.addEventListener('notificationclose', (e) => {
-  console.log('Notification close', e)
-})
-
-global.registration.showNotification('Hello', {
-  body: 'this is a notification',
-  icon: '<url>',
-  actions: [
-    {
-      title: 'Yes',
-      action: 'Yes',
-    },
-    {
-      title: 'No',
-      action: 'No',
-    },
-  ],
-})
-
-global.registration.getNotifications({
-  tag: 'tag',
-}).then((notifications) => {
-  //
-})

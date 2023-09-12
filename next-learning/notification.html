@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sync</title>
+</head>
+<body>
+  <script>
+    const TAG = 'tag'
+
+    window.navigator.serviceWorker.register('/notification.js')
+
+    if (Notification.permission === 'granted') {
+      // just go to create the notification
+    } else if (Notification.permission !== 'denied') {
+      Notification.requestPermission().then((result) => {
+        if (result === 'granted') {
+          // then go to create the notification
+        }
+      })
+    }
+
+    if (Notification.permission  !== 'granted') {
+      await Notification.requestPermission().then((result) => {
+        if (result !== 'granted') {
+          throw new Error('has no permission ...')
+        }
+      })
+    }
+
+    window.navigator.serviceWorker.ready.then((registration) => {
+      registration.showNotification('Hello', {
+        body: 'this is a notification',
+        icon: '<url>',
+        tag: TAG,
+        actions: [
+          {
+            title: 'Yes',
+            action: 'Yes',
+          },
+          {
+            title: 'No',
+            action: 'No',
+          },
+        ],
+      })
+
+      registration.getNotifications().then((notifications) => {
+        notifications.forEach((notification) => {
+          if (notification.tag !== TAG) {
+            notification.close()
+          }
+        })
+      })
+    })
+  </script>
+</body>
+</html>
