@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sync</title>
+</head>
+<body>
+  <script>
+    const TAG = 'sync'
+
+    window.navigator.serviceWorker.register('/sync.js')
+
+    window.navigator.serviceWorker.ready.then((registration) => {
+      return registration.sync.getTags().then((tags) => {
+        if (!tags.includes(TAG)) {
+          return registration.sync.register(TAG)
+        }
+      })
+    })
+  </script>
+</body>
+</html>
