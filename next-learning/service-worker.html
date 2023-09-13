@@ -32,16 +32,6 @@
       fetch('/override/success').then(console.log).catch(console.warn)
       fetch('/override/error').then(console.log).catch(console.warn)
       fetch('/override/redirect').then(console.log).catch(console.warn)
-
-      window.navigator.serviceWorker.addEventListener('message', (e) => {
-        console.log('client | message', e)
-      })
-      window.navigator.serviceWorker.addEventListener('messageerror', (e) => {
-        console.log('client | messageerror', e)
-      })
-      window.navigator.serviceWorker.ready.then((registration) => {
-        registration.active.postMessage('message from client')
-      })
     })
   </script>
 </body>

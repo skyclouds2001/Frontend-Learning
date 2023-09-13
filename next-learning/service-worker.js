@@ -55,20 +55,6 @@ global.addEventListener('unhandledrejection', (e) => {
 
 // eval('d = 10')
 
-global.clients.matchAll().then((clients) => {
-  clients.forEach((client) => {
-    client.postMessage('message from client')
-  })
-})
-
-global.addEventListener('message', (e) => {
-  console.log('worker | message', e)
-})
-
-global.addEventListener('messageerror', (e) => {
-  console.log('worker | messageerror', e)
-})
-
 const STORE_KEY = 'key'
 
 global.caches.open(STORE_KEY).then((cache) => {

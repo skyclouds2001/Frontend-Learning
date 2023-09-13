@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sync</title>
+</head>
+<body>
+  <script>
+    const TAG = 'tag'
+
+    window.navigator.serviceWorker.register('/message.js')
+
+    window.navigator.serviceWorker.controller?.postMessage('message from client')
+
+    window.navigator.serviceWorker.ready.then((registration) => {
+      registration.active?.postMessage('message from client')
+    })
+
+    window.navigator.serviceWorker.getRegistration().then((registration) => {
+      registration?.active?.postMessage('message from client')
+    })
+
+    window.navigator.serviceWorker.getRegistrations().then((registrations) => {
+      registrations.forEach((registration) => {
+        registration?.active?.postMessage('message from client')
+      })
+    })
+
+    window.navigator.serviceWorker.addEventListener('message', (e) => {
+      console.log('message', e)
+    })
+
+    window.navigator.serviceWorker.addEventListener('messageerror', (e) => {
+      console.log('messageerror', e)
+    })
+  </script>
+</body>
+</html>
