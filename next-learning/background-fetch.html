@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background Fetch</title>
+</head>
+<body>
+  <script>
+    const ID = 'fetch'
+
+    window.navigator.serviceWorker.register('/background-fetch.js')
+
+    window.navigator.serviceWorker.ready.then((registration) => {
+      registration.backgroundFetch.fetch(
+        ID,
+        ["/ep-5.mp3", "ep-5-artwork.jpg"],
+        {
+          title: "Episode 5: Interesting things.",
+          icons: [
+            {
+              sizes: "300x300",
+              src: "/ep-5-icon.png",
+              type: "image/png",
+            },
+          ],
+          downloadTotal: 60 * 1024 * 1024,
+        },
+      )
+
+      registration.backgroundFetch.get(ID).then((registration) => {
+        registration.abort()
+      })
+    })
+  </script>
+</body>
+</html>
