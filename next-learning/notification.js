@@ -2,15 +2,15 @@
 /// <reference lib="esnext" />
 /// <reference lib="webworker" />
 
-global.addEventListener('notificationclick', (e) => {
+self.addEventListener('notificationclick', (e) => {
   console.log('Notification click', e)
 })
 
-global.addEventListener('notificationclose', (e) => {
+self.addEventListener('notificationclose', (e) => {
   console.log('Notification close', e)
 })
 
-global.registration.showNotification('Hello', {
+self.registration.showNotification('Hello', {
   body: 'this is a notification',
   icon: '<url>',
   actions: [
