@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PeriodicSync</title>
+</head>
+<body>
+  <script>
+    const TAG = 'tag'
+
+    window.navigator.serviceWorker.register('/periodic-sync.js')
+
+    window.navigator.serviceWorker.ready.then((registration) => {
+      registration.periodicSync.register(TAG, {
+        minInterval: 24 * 60 * 60 * 1000,
+      })
+
+      registration.periodicSync.getTags().then((tags) => {
+        if (tags.includes(TAG)) {
+          // do something
+        }
+      })
+
+      registration.periodicSync.unregister(TAG)
+    })
+  </script>
+</body>
+</html>
