@@ -9,15 +9,11 @@
   <script>
     window.navigator.serviceWorker.getRegistrations().then((registrations) => {
       registrations.forEach((registration) => {
+        /** development mode */
         // registration.unregister()
+        /** production mode */
         registration.update()
       })
-    })
-
-    window.navigator.serviceWorker.getRegistration().then((registration) => {
-      if (registration.scriptURL !== '/service-worker.js?v=1.0.0') { // ???
-        registration.update();
-      }
     })
 
     window.navigator.serviceWorker.register('./service-worker.js', {
@@ -25,13 +21,9 @@
       type: 'module',
       updateViaCache: 'all',
     }).then((registration) => {
-      console.log('client | registration success', registration);
+      console.log('client | registration success', registration)
     }).catch((error) => {
-      console.log('client | registration fail', error);
-    }).finally(() => {
-      fetch('/override/success').then(console.log).catch(console.warn)
-      fetch('/override/error').then(console.log).catch(console.warn)
-      fetch('/override/redirect').then(console.log).catch(console.warn)
+      console.log('client | registration fail', error)
     })
   </script>
 </body>

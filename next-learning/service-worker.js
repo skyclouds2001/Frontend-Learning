@@ -2,18 +2,15 @@
 /// <reference lib="esnext" />
 /// <reference lib="webworker" />
 
-/** @type {ServiceWorkerGlobalScope} */
-const global = globalThis
-
-global.addEventListener('install', (e) => {
+self.addEventListener('install', (e) => {
   console.log('worker | install', e)
 })
 
-global.addEventListener('activate', (e) => {
+self.addEventListener('activate', (e) => {
   console.log('worker | activate', e)
 })
 
-global.addEventListener('fetch', (e) => {
+self.addEventListener('fetch', (e) => {
   console.log('worker | fetch', e)
 
   if (e.request.url.includes('success')) {
@@ -29,28 +26,26 @@ global.addEventListener('fetch', (e) => {
   }
 })
 
-global.addEventListener('error', (e) => {
+self.addEventListener('error', (e) => {
   console.log('worker | error', e)
 })
 
-global.addEventListener('languagechange', (e) => {
+self.addEventListener('languagechange', (e) => {
   console.log('worker | languagechange', e)
 })
 
-global.addEventListener('online', (e) => {
+self.addEventListener('online', (e) => {
   console.log('worker | online', e)
 })
 
-global.addEventListener('offline', (e) => {
+self.addEventListener('offline', (e) => {
   console.log('worker | offline', e)
 })
 
-global.addEventListener('rejectionhandled', (e) => {
+self.addEventListener('rejectionhandled', (e) => {
   console.log('worker | rejectionhandled', e)
 })
 
-global.addEventListener('unhandledrejection', (e) => {
+self.addEventListener('unhandledrejection', (e) => {
   console.log('worker | unhandledrejection', e)
 })
-
-// eval('d = 10')
