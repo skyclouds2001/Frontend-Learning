@@ -15,7 +15,9 @@
       console.log('receive message in client: ', e.data)
     })
 
-    window.addEventListener('unload', worker.terminate)
+    window.addEventListener('unload', () => {
+      worker.terminate()
+    })
 
     const data = new ArrayBuffer(100)
     worker.postMessage(data, [data])
