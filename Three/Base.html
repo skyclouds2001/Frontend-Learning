@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div id="container" style="width: 100vw; height: 100vh;"></div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.156.1/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.156.1/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import * as THREE from 'three'
+    import WebGL from 'three/addons/capabilities/WebGL'
+    import Stats from 'three/addons/libs/stats.module'
+    import { OrbitControls } from 'three/addons/controls/OrbitControls'
+
+    const container = document.getElementById('container')
+
+    if (!WebGL.isWebGLAvailable()) {
+      container.value.appendChild(WebGL.getWebGLErrorMessage())
+    }
+
+    const animate = () => {
+      controls.update()
+      stats.update()
+      renderer.render(scene, camera)
+
+      render()
+    }
+
+    const { width, height } = container.getBoundingClientRect()
+
+    const stats = new Stats()
+    stats.dom.style.position = 'absolute'
+    stats.dom.style.top = '0'
+    stats.dom.style.left = '0'
+    container.appendChild(stats.dom)
+
+    const scene = new THREE.Scene()
+    scene.name = 'Scene'
+    scene.background = new THREE.Color(0x000000)
+    scene.fog = new THREE.Fog(0x000000, 10, 25)
+
+    const camera = new THREE.PerspectiveCamera(70, width / height, 0.2, 10)
+    camera.name = 'PerspectiveCamera'
+    camera.position.set(0.5, 0.5, 0.5)
+    camera.up.set(0, 1, 0)
+    camera.lookAt(0, 0, 0)
+
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+    })
+    renderer.setAnimationLoop(animate)
+    renderer.setPixelRatio(window.devicePixelRatio)
+    renderer.setSize(width, height)
+
+    container.appendChild(renderer.domElement)
+
+    const helper = new THREE.AxesHelper(20)
+    scene.add(helper)
+
+    const controls = new OrbitControls(camera, renderer.domElement)
+    controls.enableDamping = true
+
+    window.addEventListener('resize', (e) => {
+      const { width, height } = container.getBoundingClientRect()
+
+      camera.aspect = width / height
+      camera.updateProjectionMatrix()
+      renderer.setPixelRatio(window.devicePixelRatio)
+      renderer.setSize(width, height)
+      renderer.render(scene, camera)
+    }, {
+      passive: true,
+    })
+  </script>
+</body>
+</html>
