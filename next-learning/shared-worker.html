@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worker</title>
+</head>
+<body>
+  <script>
+    const worker = new SharedWorker('./worker.js')
+
+    worker.port.start()
+
+    worker.port.postMessage('message from client')
+
+    worker.port.addEventListener('message', (e) => {
+      console.log('receive message in client: ', e.data)
+    })
+
+    worker.port.close()
+  </script>
+</body>
+</html>
