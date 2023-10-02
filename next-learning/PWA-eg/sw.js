@@ -4,12 +4,15 @@
 /// <reference lib="webworker.importscripts" />
 /// <reference lib="webworker.iterable" />
 
+const CACHE_NAME = 'pwa'
+
 self.addEventListener('install', (e) => {
   e.waitUntil(
-    self.caches.open('pwa').then((cache) => (
+    self.caches.open(CACHE_NAME).then((cache) => (
       cache.addAll([
         './',
         './index.html',
+        './post.html',
         './sw.js',
         './manifest.webmanifest',
         './icon.png',
@@ -35,10 +38,10 @@ self.addEventListener('fetch', (e) => {
 
   e.respondWith(
     self.caches.match(e.request, {
-      cacheName: 'pwa',
+      cacheName: CACHE_NAME,
     }).then((res) => (
       res ?? fetch(e.request).then((res) => (
-        self.caches.open('pwa').then((cache) => {
+        self.caches.open(CACHE_NAME).then((cache) => {
           cache.put(e.request, res)
 
           return res
