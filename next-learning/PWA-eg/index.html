@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>PWA eg</title>
-    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="manifest" href="./manifest.webmanifest" />
 
-    <script type="text/javascript">
+    <script type="module">
         let evt
 
         window.addEventListener('beforeinstallprompt', (e) => {
@@ -20,15 +20,23 @@
             window.alert('PWA eg installed success')
         })
 
-        window.navigator.serviceWorker.register('/sw.js', {
+        window.navigator.serviceWorker.getRegistrations().then((registrations) => {
+            registrations.forEach((registration) => {
+                registration.update()
+            })
+        })
+
+        window.navigator.serviceWorker.register('./sw.js', {
             type: 'module',
             scope: '/',
             updateViaCache: 'none',
         })
 
-        function install() {
-            evt.prompt()
-        }
+        window.addEventListener('load', () => {
+            document.getElementById('install', () => {
+                evt.prompt()
+            })
+        })
     </script>
 </head>
 
@@ -36,7 +44,7 @@
     <div>
         <h1>PWA eg</h1>
         <h6>home page</h6>
-        <button onclick="install()">install PWA eg</button>
+        <button id="install">install PWA eg</button>
     </div>
 </body>
 

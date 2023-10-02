@@ -2,7 +2,7 @@
   "name": "PWA eg",
   "icons": [
     {
-      "src": "/icon.png",
+      "src": "./icon.png",
       "type": "image/png",
       "sizes": "512x512"
     }

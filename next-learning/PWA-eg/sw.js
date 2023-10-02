@@ -4,21 +4,21 @@
 /// <reference lib="webworker.importscripts" />
 /// <reference lib="webworker.iterable" />
 
-self.registration.addEventListener('updatefound', () => {
-  self.registration.update()
-})
-
 self.addEventListener('install', (e) => {
   e.waitUntil(
     self.caches.open('pwa').then((cache) => (
       cache.addAll([
-        '/',
-        '/index.html',
-        '/sw.js',
-        '/manifest.webmanifest',
-        '/icon.png',
+        './',
+        './index.html',
+        './sw.js',
+        './manifest.webmanifest',
+        './icon.png',
       ])
     ))
+  )
+
+  e.waitUntil(
+    self.skipWaiting()
   )
 })
 
@@ -29,8 +29,14 @@ self.addEventListener('activate', (e) => {
 })
 
 self.addEventListener('fetch', (e) => {
-  e.responseWith(
-    self.caches.match(e.request).then((res) => (
+  if (!e.request.url.match(/https?:\/\//)) {
+    return
+  }
+
+  e.respondWith(
+    self.caches.match(e.request, {
+      cacheName: 'pwa',
+    }).then((res) => (
       res ?? fetch(e.request).then((res) => (
         self.caches.open('pwa').then((cache) => {
           cache.put(e.request, res)
@@ -40,4 +46,8 @@ self.addEventListener('fetch', (e) => {
       ))
     ))
   )
+})
+
+self.registration.addEventListener('updatefound', () => {
+  self.registration.active != null && self.registration.update()
 })
