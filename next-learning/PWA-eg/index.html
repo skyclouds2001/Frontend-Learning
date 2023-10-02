@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>PWA eg</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <script type="text/javascript">
+        let evt
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            evt = e
+        })
+
+        window.addEventListener('appinstalled', () => {
+            window.alert('PWA eg installed success')
+        })
+
+        window.navigator.serviceWorker.register('/sw.js', {
+            type: 'module',
+            scope: '/',
+            updateViaCache: 'none',
+        })
+
+        function install() {
+            evt.prompt()
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <h1>PWA eg</h1>
+        <h6>home page</h6>
+        <button onclick="install()">install PWA eg</button>
+    </div>
+</body>
+
+</html>
