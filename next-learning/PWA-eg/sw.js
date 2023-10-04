@@ -23,6 +23,10 @@ self.addEventListener('install', (e) => {
   e.waitUntil(
     self.skipWaiting()
   )
+
+  e.waitUntil(
+    self.registration.navigationPreload.enable()
+  )
 })
 
 self.addEventListener('activate', (e) => {
