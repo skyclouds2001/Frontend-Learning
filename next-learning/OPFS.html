@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPFS</title>
+</head>
+<body>
+  <input id="input" />
+  <button id="write">WRITE</button>
+  <input id="data" readonly />
+  <button id="read">READ</button>
+  <script>
+    /** @type{HTMLInputElement} */
+    const input = document.getElementById('input')
+    /** @type{HTMLButtonElement} */
+    const write = document.getElementById('write')
+    /** @type{HTMLInputElement} */
+    const data = document.getElementById('data')
+    /** @type{HTMLButtonElement} */
+    const read = document.getElementById('read')
+  
+    const worker = new Worker('./OPFS.js')
+
+    write.addEventListener('click', () => {
+      worker.postMessage(input.value)
+    })
+
+    read.addEventListener('click', async () => {
+      const root = await window.navigator.storage.getDirectory()
+
+      const draftHandle = await root.getFileHandle('draft.txt', {
+        create: true,
+      })
+
+      const file = await draftHandle.getFile()
+
+      data.value = await file.text()
+    })
+  </script>
+</body>
+</html>
