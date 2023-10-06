@@ -10,6 +10,7 @@
   <button id="write">WRITE</button>
   <input id="data" readonly />
   <button id="read">READ</button>
+  <div id="box"></div>
   <script type="module">
     /** @type{HTMLInputElement} */
     const input = document.getElementById('input')
@@ -19,29 +20,44 @@
     const data = document.getElementById('data')
     /** @type{HTMLButtonElement} */
     const read = document.getElementById('read')
+    /** @type{HTMLDivElement} */
+    const box = document.getElementById('box')
 
-    const root = await window.navigator.storage.getDirectory()
-
-    const draftHandle = await root.getFileHandle('draft.txt', {
-      create: true,
-    })
-  
     const worker = new Worker('./OPFS.js')
 
     write.addEventListener('click', async () => {
       worker.postMessage(input.value)
-
-      const writeStream = await draftHandle.createWritable()
-
-      writeStream.write(input.value)
-
-      writeStream.close()
     })
 
     read.addEventListener('click', async () => {
+      const root = await window.navigator.storage.getDirectory()
+
+      const draftHandle = await root.getFileHandle('draft.txt', {
+        create: true,
+      })
       const file = await draftHandle.getFile()
 
       data.value = await file.text()
+    })
+
+    box.addEventListener('drop', async (e) => {
+      e.preventDefault()
+
+      const root = await window.navigator.storage.getDirectory()
+
+      for (const item of e.dataTransfer.items) {
+        const entry = await item.getAsFileSystemHandle()
+
+        if (entry.kind === 'file') {
+          const handle = await root.getFileHandle(entry.name, {
+            create: true,
+          })
+
+          const writeStream = await handle.createWritable()
+          writeStream.write(item.getAsFile())
+          writeStream.close()
+        }
+      }
     })
   </script>
 </body>
