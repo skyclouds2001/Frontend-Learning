@@ -17,11 +17,7 @@ self.addEventListener('install', (e) => {
         './manifest.webmanifest',
         './icon.png',
       ])
-    ))
-  )
-
-  e.waitUntil(
-    self.skipWaiting()
+    )).then(() => self.skipWaiting())
   )
 
   e.waitUntil(
