@@ -13,7 +13,7 @@
       box-sizing: border-box;
     }
   </style>
-  <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
 </head>
 
 <body>
@@ -34,6 +34,35 @@
     run.onclick = () => {
       output.value = pyodide.runPython(input.value)
     }
+
+    pyodide.runPython(`print('Hello world!')`)
+
+    console.log(pyodide.runPython('2 ** 10'))
+
+    console.log(pyodide.runPython(`
+import sys
+sys.version
+    `))
+
+    pyodide.runPython('x = 1')
+    pyodide.runPython(`y = 'xes'`)
+    pyodide.runPython('z = [2, 4]')
+
+    console.log(pyodide.globals.get('x'))
+    console.log(pyodide.globals.get('y'))
+    console.log(pyodide.globals.get('z').toJs())
+
+    pyodide.globals.set('xx', 'xxxxx')
+    pyodide.globals.set('alert', alert)
+    pyodide.globals.set('square', x => x ** 2)
+    pyodide.runPython('print(xx)')
+    pyodide.runPython(`alert('xxxx')`)
+    pyodide.runPython('print(square(20))')
+
+    pyodide.runPython(`
+import js
+js.confirm('message')
+`)
   </script>
 </body>
 
