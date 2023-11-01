@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pyodide</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+</head>
+
+<body>
+  <input id="input" />
+  <button id="run">RUN</button>
+  <input id="output" />
+
+  <script type="module">
+    /** @type {HTMLButtonElement} */
+    const run = document.getElementById('run')
+    /** @type {HTMLInputElement} */
+    const input = document.getElementById('input')
+    /** @type {HTMLInputElement} */
+    const output = document.getElementById('output')
+
+    const pyodide = await loadPyodide()
+
+    run.onclick = () => {
+      output.value = pyodide.runPython(input.value)
+    }
+  </script>
+</body>
+
+</html>
