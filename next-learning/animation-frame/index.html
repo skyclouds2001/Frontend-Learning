@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <script type="text/javascript">
+      // the time delay is set to avoid duplicate output in console
+
+      // case 1
+      // will not throw
+      setTimeout(() => {
+        new Worker('./dedicated-worker.js')
+      }, 0)
+
+      // case 2
+      // will not throw
+      setTimeout(() => {
+        new Worker('./worker.js')
+      }, 1000)
+
+      // case 3
+      // will throw
+      setTimeout(() => {
+        new SharedWorker('./shared-worker.js')
+      }, 2000)
+    </script>
+</head>
+</html>
