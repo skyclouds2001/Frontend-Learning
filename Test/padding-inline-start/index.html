@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+  <title>padding-inline-start</title>
+</head>
+<body>
+  <style>
+    .box {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      background-clip: content-box;
+      outline-color: blue;
+      outline-width: 1px;
+      outline-style: solid;
+      padding-top: 10px;
+      padding-bottom: 20px;
+      padding-left: 30px;
+      padding-right: 40px;
+    }
+  </style>
+
+  <div class="box" style="direction: ltr; writing-mode: horizontal-tb;">text</div>
+  <div class="box" style="direction: rtl; writing-mode: horizontal-tb;">text</div>
+  <div class="box" style="direction: ltr; writing-mode: vertical-lr;">text</div>
+  <div class="box" style="direction: rtl; writing-mode: vertical-lr;">text</div>
+  <div class="box" style="direction: ltr; writing-mode: vertical-rl;">text</div>
+  <div class="box" style="direction: rtl; writing-mode: vertical-rl;">text</div>
+
+  <script type="module">
+    const boxes = document.querySelectorAll('.box')
+
+    boxes.forEach((box) => {
+      const styles = window.getComputedStyle(box)
+
+      console.log(`padding-inline-start: ${styles.paddingInlineStart}`)
+      console.log(`writing-mode: ${styles.writingMode}`)
+      console.log(`direction: ${styles.direction}`)
+      console.log('')
+    })
+  </script>
+</body>
+</html>
