@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+  <title>spellcheck-demo</title>
+</head>
+<body>
+  <div>
+    <span id="spellcheck-label">The spelling and grammar may be checked:</span>
+  </div>
+  <div>
+    <input id="spellcheck-element" spellcheck="true" autofocus />
+  </div>
+  <div>
+    <span>Change the checkbox to enable or disable spelling and grammar check</span>
+  </div>
+  <div>
+    <input id="spellcheck-controller" type="checkbox" checked />
+  </div>
+  <div>
+    <span>Note that you must enable the browser setting of spelling and grammar check</span>
+  </div>
+  <script type="module">
+    const label = document.getElementById('spellcheck-label')
+    const element = document.getElementById('spellcheck-element')
+    const controller = document.getElementById('spellcheck-controller')
+
+    controller.addEventListener('change', (e) => {
+      if (controller.checked) {
+        element.spellcheck = true
+        label.innerText = 'The spelling and grammar may be checked:'
+      } else {
+        element.spellcheck = false
+        label.innerText = 'The spelling and grammar will not be checked:'
+      }
+    })
+  </script>
+</body>
+</html>
