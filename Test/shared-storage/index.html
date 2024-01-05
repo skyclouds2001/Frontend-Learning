@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+  <title>shared-storage</title>
+</head>
+<body>
+  <fencedframe id="ad-slot" mode="opaque-ads"></fencedframe>
+  <script type="module">
+    await window.sharedStorage.worklet.addModule("shared-storage-worklet.js")
+
+    window.sharedStorage.set('test', 0, { ignoreIfPresent: true })
+
+    const configs = await window.sharedStorage.selectURL('shared-storage', [
+      { 
+        url: `https://${location.href}/ads/hover-ad.html`,
+      },
+    ], {
+      resolveToConfig: true,
+    })
+
+    const adSlot = document.getElementById('ad-slot')
+
+    adSlot.config = configs
+  </script>
+</body>
+</html>
