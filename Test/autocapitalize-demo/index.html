@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+  <title>autocapitalize-demo</title>
+</head>
+<body>
+  <div>
+    Current capitalization behavior is : <span id="ac-label"></span>
+  </div>
+  <div>
+    <span id="ac-element" contenteditable="true" autocapitalize="default">input here</span>
+  </div>
+  <select id="ac-controller" type="checkbox" checked>
+    <option value="default">default</option>
+    <option value="none">none</option>
+    <option value="sentences">sentences</option>
+    <option value="words">words</option>
+    <option value="characters">characters</option>
+  </select>Select the capitalization behavior
+
+  <script type="module">
+    const label = document.getElementById("ac-label");
+    const element = document.getElementById("ac-element");
+    const controller = document.getElementById("ac-controller");
+
+    controller.addEventListener("input", (e) => {
+      const behavior = e.target.value;
+      label.textContent = behavior;
+      element.autocapitalize = behavior;
+    });
+  </script>
+</body>
+</html>
