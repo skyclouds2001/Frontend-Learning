@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+  <title>sync-demo</title>
+</head>
+<body>
+  <script type="module">
+    window.navigator.serviceWorker.register('./sw.js', {
+      type: 'module',
+      scope: './',
+    })
+  </script>
+</body>
+</html>
