@@ -7,4 +7,12 @@ self.addEventListener('sync', (e) => {
   console.log(e)
 })
 
-self.registration.sync.register('tag')
+self.addEventListener('periodicsync', (e) => {
+  console.log(e)
+})
+
+setTimeout(() => {
+  self.registration.sync.register('tag')
+
+  self.registration.periodicSync.register('tag')
+}, 10 * 1000)
